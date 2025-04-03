@@ -14,8 +14,9 @@ The Coop Game is an innovative blend of various technologies designed to create 
 
 ### Game Technology
 
-- **Game Development**: The game itself is developed using **libGDX**, a powerful cross-platform game development framework for Java. The HTML version ensures accessibility and a smooth gaming experience across different devices.
-  - [libGDX](https://libgdx.com/)
+- **Game Development**: The game itself is developed using **Phaser**, a powerful cross-platform game development framework for Javascript. The HTML version ensures accessibility and a smooth gaming experience across different devices.
+  - [Phaser](https://phaser.io)
+  - [Phaser Comunity](https://discord.com/invite/phaser)
 
 ### Backend Infrastructure
 
@@ -34,6 +35,10 @@ The Coop Game is an innovative blend of various technologies designed to create 
 
 Explore the comprehensive guides and documentation provided on this site to get started with Coop Game development:
 
-- **Explore libGDX**: Learn the basics of game development using the libGDX framework. Understand how to set up your development environment, create sprites, manage game physics, and integrate sound and music for a rich gaming experience.
+- **Explore Phaser**: Learn the basics of game development using the Phaser framework. Understand how to set up your development environment, create sprites, manage game physics, and integrate sound and music for a rich gaming experience.
 - **Backend Development with Python on GCP**: Dive into the Python-based backend, hosted on GCP, which handles multiplayer interactions, data storage, and real-time game state synchronization. Discover how to deploy and manage your game's backend infrastructure with Google Cloud Platform services.
+- **Notion documation**: The changes made in the game are documented in Notion. This includes game design decisions, development processes, and any other relevant information that can help future developers understand the project better.
+  - [Notion Documentation](https://www.notion.so/1187f8928ee28173ac9bf63a11d353c4?v=1187f8928ee28190b430000cfecb0d3b&pvs=4)
+- **GitHub Repository**: The source code for the Coop Game is hosted on GitHub, allowing developers to contribute, report issues, and collaborate on the project. The repository includes detailed instructions for setting up the development environment and running the game locally.
+  - [GitHub Organization](https://github.com/CoOp-World)
 - **GitHub Pages for Documentation**: This site itself is a testament to the ease of documentation and deployment. Utilizing GitHub Pages and the Just the Docs theme, we've created a user-friendly documentation site that can be easily maintained and updated alongside game development.

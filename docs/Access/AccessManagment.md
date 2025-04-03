@@ -16,20 +16,20 @@ Before proceeding, ensure you have administrator-level access to the respective 
 2. Access the **IAM & Admin** dashboard from the main navigation menu to begin the process of assigning roles and permissions.
 
 ### Project Selection
-![image](../../assets/game-id.png)
-![image](../../assets/server-id.png)
 
-- For **server-side operations**, select the project named **co-op-world-game**.
-- For **application-related operations**, choose the project titled **co-op-world-server**.
+![image](../../assets/game-id.png)
+
+Select the project named **co-op-world-game**.
 
 ### Server-side Operations Permissions
 
-#### Compute Admin
+#### Cloud Functions Admin
 
 - **Role**: `roles/compute.admin`
 - **Purpose**: Grants full control over all compute resources, essential for managing and configuring servers.
 
 #### Service Account User
+
 ![image](../../assets/service_account.png)
 
 - **Role**: `roles/iam.serviceAccountUser`
@@ -48,6 +48,7 @@ Before proceeding, ensure you have administrator-level access to the respective 
 - **Purpose Again**: Enables actions as the service account, supporting application automation and integration with GCP services.
 
 ### Assigning Roles
+
 ![image](../../assets/assign_role.png)
 
 To assign roles:
