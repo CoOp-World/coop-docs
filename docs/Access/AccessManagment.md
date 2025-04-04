@@ -56,5 +56,5 @@ To assign roles:
 1. Navigate to the **IAM** section within the IAM & Admin dashboard.
 2. Click the pencil icon next to the user or service account to modify permissions.
 3. Use **+ADD ANOTHER ROLE** for each necessary role, selecting the appropriate roles from the dropdown menu.
-4. (Optional) Apply IAM conditions for advanced access control, if needed.
+4. (Optional ) Apply IAM conditions for advanced access control, if needed.
 5. Save your changes to apply the new permissions.

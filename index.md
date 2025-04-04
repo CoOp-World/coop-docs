@@ -41,4 +41,4 @@ Explore the comprehensive guides and documentation provided on this site to get 
   - [Notion Documentation](https://www.notion.so/1187f8928ee28173ac9bf63a11d353c4?v=1187f8928ee28190b430000cfecb0d3b&pvs=4)
 - **GitHub Repository**: The source code for the Coop Game is hosted on GitHub, allowing developers to contribute, report issues, and collaborate on the project. The repository includes detailed instructions for setting up the development environment and running the game locally.
   - [GitHub Organization](https://github.com/CoOp-World)
-- **GitHub Pages for Documentation**: This site itself is a testament to the ease of documentation and deployment. Utilizing GitHub Pages and the Just the Docs theme, we've created a user-friendly documentation site that can be easily maintained and updated alongside game development.
+- **GitHub Pages for Documentation**: This site itself is a testament to the ease of documentation and deployment. Utilizing GitHub Pages and the Just the Docs theme, we've created a user-friendly documentation site that can be easily maintained and updated alongside game development .
