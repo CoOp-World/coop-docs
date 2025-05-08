@@ -1,7 +1,11 @@
-title: Coop System Docs
-description: ""
+title: Co-Op Docs
 theme: just-the-docs
+baseurl: "/coop-docs" # Important for GitHub Pages
+url: "https://coop-world.github.io"
 
-url: https://coop-world.github.io/coop-docs
+color_scheme: light
+search_enabled: true
+nav_sort: case_insensitive
 
-color_scheme: dark
+aux_links:
+  GitHub: https://github.com/coop-world/coop-docs
