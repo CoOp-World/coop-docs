@@ -15,8 +15,8 @@ The Coop Game is an innovative blend of various technologies designed to create 
 ### Game Technology
 
 - **Game Development**: The game itself is developed using **Phaser**, a powerful cross-platform game development framework for Javascript. The HTML version ensures accessibility and a smooth gaming experience across different devices.
-  - [Phaser](https://phaser.io)
-  - [Phaser Comunity](https://discord.com/invite/phaser)
+  - [Phaser](https://phaser.io){:target="\_blank"}
+  - [Phaser Comunity](https://discord.com/invite/phaser){:target="\_blank"}
 
 ### Backend Infrastructure
 
@@ -26,10 +26,18 @@ The Coop Game is an innovative blend of various technologies designed to create 
 ### Additional Services
 
 1. **Admin Panel**: An admin panel provides access to analytical data and information for each user. This panel helps researchers and administrators manage and analyze game data effectively.
-   - [Admin Panel Platform](https://prolific-survey-xpdmwwgl7a-lm.a.run.app/login)
-   - [GitHub Repository](https://github.com/Etelis/Coop-Admin-Panel)
+   - [Admin Panel Platform](https://prolific-survey-xpdmwwgl7a-lm.a.run.app/login){:target="\_blank"}
+   - [GitHub Repository](https://github.com/Etelis/Coop-Admin-Panel){:target="\_blank"}
 2. **PDF Creator**: A service for creating PDFs with participant information, facilitating the documentation and analysis of individual progress and data.
 3. **Prolific Survey Template**: This template is used for running examinations and gathering survey data, supporting the research component of the project.
+4. **Coop Game Website**: This website is the main entry point for the Coop Game. It provides information about the game, its features, and how to get started.
+   - [Coop Game Website](https://www.coopworld.net){:target="\_blank"}
+   - [GitHub Repository](https://github.com/CoOp-World/Co-Op-Website){:target="\_blank"}
+5. **Coop User Management**: This service is used to manage users.
+   - [Coop User Management](https://co-op-user-management-791222378113.europe-central2.run.app){:target="\_blank"}
+   - [GitHub Repository](https://github.com/CoOp-World/Co-op-user-management){:target="\_blank"}
+6. **Coop Game**: This service is used to run the game.
+   - [GitHub Repository](https://github.com/CoOp-World/CO-OP-client){:target="\_blank"}
 
 ## Getting Started with Coop Game Development
 
@@ -38,7 +46,7 @@ Explore the comprehensive guides and documentation provided on this site to get 
 - **Explore Phaser**: Learn the basics of game development using the Phaser framework. Understand how to set up your development environment, create sprites, manage game physics, and integrate sound and music for a rich gaming experience.
 - **Backend Development with Python on GCP**: Dive into the Python-based backend, hosted on GCP, which handles multiplayer interactions, data storage, and real-time game state synchronization. Discover how to deploy and manage your game's backend infrastructure with Google Cloud Platform services.
 - **Notion documation**: The changes made in the game are documented in Notion. This includes game design decisions, development processes, and any other relevant information that can help future developers understand the project better.
-  - [Notion Documentation](https://www.notion.so/1187f8928ee28173ac9bf63a11d353c4?v=1187f8928ee28190b430000cfecb0d3b&pvs=4)
+  - [Notion Documentation](https://www.notion.so/1187f8928ee28173ac9bf63a11d353c4?v=1187f8928ee28190b430000cfecb0d3b&pvs=4){:target="\_blank"}
 - **GitHub Repository**: The source code for the Coop Game is hosted on GitHub, allowing developers to contribute, report issues, and collaborate on the project. The repository includes detailed instructions for setting up the development environment and running the game locally.
-  - [GitHub Organization](https://github.com/CoOp-World)
+  - [GitHub Organization](https://github.com/CoOp-World){:target="\_blank"}
 - **GitHub Pages for Documentation**: This site itself is a testament to the ease of documentation and deployment. Utilizing GitHub Pages and the Just the Docs theme, we've created a user-friendly documentation site that can be easily maintained and updated alongside game development .

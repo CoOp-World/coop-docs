@@ -1,8 +1,9 @@
 ---
 layout: default
-title: Backend
+title: Functions
 nav_order: 5
+parent: Backend
 has_children: true
 ---
 
-# Backend
+# Functions

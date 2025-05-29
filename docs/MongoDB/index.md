@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Addons
-nav_order: 7
+title: MongoDB
+nav_order: 6
 has_children: true
 ---
 
-# Addons
+# MongoDB

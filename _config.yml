@@ -1,6 +1,6 @@
 title: Co-Op Docs
 theme: just-the-docs
-baseurl: "/coop-docs" # Important for GitHub Pages
+baseurl: "/coop-docs"
 url: "https://coop-world.github.io"
 
 color_scheme: light
