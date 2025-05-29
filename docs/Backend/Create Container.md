@@ -38,3 +38,5 @@ Now you need to change the port (if you use the ngnix in the co-op-client) to po
 ![Deploy](../../assets/deploy.png)
 
 Then after some time you will see the repo deployed and you can access it from the url.
+
+**Every time you push a new commit to the repository to the branch you choose the container will be updated.**
