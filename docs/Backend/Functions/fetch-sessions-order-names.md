@@ -12,16 +12,24 @@ nav_order: 18
 
 - **Function Name:** `fetch-sessions-order-names`
 - **Region:** `europe-central2`
-- **URL:** `https://fetch-sessions-order-names-xpdmwwgl7a-lm.a.run.app`
+- **URL:** `https://fetch-sessions-order-names-791222378113.europe-central2.run.app`
 
 ## 🛠️ What the Function Is Doing
 
-(TODO)
+This Cloud Function fetches all documents from a MongoDB collection containing session orders.
+
+- It establishes a connection to MongoDB using environment variables.
+- It queries the collection for all documents, excluding `_id`.
+- It returns the result as a JSON array of session records. As you can see in [here](../../MongoDB/Collections/coop__sessions.html).
+- It also supports CORS for frontend usage.
 
 ## 📥 Expected Input
 
-(TODO)
+This function expects a `GET` request.
+
+No request body is required.
 
 ## 🔄 How It’s Used in the System
 
-(TODO)
+This function is used to fetch the order names of sessions in the user creation process. It is called by the frontend when the user selects a session to create a new one. The function retrieves the order names from the database and returns them in a JSON format.
+It is used in the user creation process to ensure that the user can select a valid session order name when creating a new session.

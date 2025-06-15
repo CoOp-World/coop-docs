@@ -12,16 +12,17 @@ nav_order: 7
 
 - **Function Name:** `checkwebsitestatus`
 - **Region:** `europe-central2`
-- **URL:** `https://checkwebsitestatus-xpdmwwgl7a-lm.a.run.app`
+- **URL:** `https://europe-central2-co-op-world-game.cloudfunctions.net/checkWebsiteStatus`
 
 ## 🛠️ What the Function Is Doing
 
-(TODO)
+This function checks the status of a website by making an HTTP request to the specified URL. It returns the HTTP status code and the response body, which can be used to determine if the website is up and running or if there are any issues. It checkes the status in mongoDB and updates the status if necessary, In collection
+[here](../../MongoDB/Collections/coop__config.html).
 
 ## 📥 Expected Input
 
-(TODO)
+No input is required for this function. It can be triggered by an HTTP request without any parameters. The function will check the status of the website configured in the database.
 
 ## 🔄 How It’s Used in the System
 
-(TODO)
+Before the game starts, the client checks the status of the website by calling this function. If the website is down or not reachable, the game will display an error message to the user and prevent them from starting the game. This ensures that users are aware of any issues with the website before they attempt to play.
