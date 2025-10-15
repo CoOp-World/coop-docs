@@ -12,8 +12,6 @@ Felix's experimental version of the Coop Game is designed to study children's de
 ## Access Information
 
 - **Game URL**: [https://exp-felix-791222378113.us-central1.run.app](https://exp-felix-791222378113.us-central1.run.app){:target="_blank"}
-- **Available Levels**: 0, 11-13
-- **Test User IDs**: 1913, 8918
 - **Repository Branch**: `dev-Felix-exp`
 
 ## Complete Game Flow
@@ -25,7 +23,7 @@ Felix's experimental version of the Coop Game is designed to study children's de
 - System loads user configuration and session data
 - Master users see level progression counter (Level: X/Y) in top-left corner
 
-![Screenshot placeholder: User login screen with ID input field]
+![Login Screen](../../assets/login_screen.png)
 
 #### Tutorial Level (Level 0)
 - **Purpose**: Teach basic game controls and mechanics
@@ -35,8 +33,6 @@ Felix's experimental version of the Coop Game is designed to study children's de
   - Interaction with coins and collectibles
   - Understanding cooperation mechanics
 - **Virtual Player Introduction**: Players meet the virtual characters they'll work with
-
-![Screenshot placeholder: Tutorial level showing control instructions and basic gameplay]
 
 ### Phase 2: Character Speed Training
 
@@ -49,8 +45,6 @@ Felix's experimental version of the Coop Game is designed to study children's de
 - **Purpose**: Players experience working with the fast-moving virtual character
 - **Mechanics**: Virtual player moves at increased speed
 - **Learning Outcome**: Understanding how character speed affects coin collection strategies
-
-![Screenshot placeholder: Split screen showing slow vs fast character movement comparison]
 
 ### Phase 3: Main Experimental Rounds (7 Rounds)
 
@@ -66,22 +60,19 @@ Each of the 7 rounds follows this pattern:
      - **Unfair Character**: Keeps more coins, gives less to the player (varies by level)
    - Visual representation shows how each character splits coins
 
-![Screenshot placeholder: Character selection screen with two options showing coin distribution]
-
 2. **Gameplay Phase**
    - Player works with their chosen virtual character
    - Collect coins together during the time limit
    - Cooperation mechanics determine success
    - Coin splitting happens according to chosen character's behavior
 
-![Screenshot placeholder: Active gameplay with player and virtual character collecting coins]
+![Gameplay Showcase](../../assets/gameplay_showcase.png)
 
 3. **Results Display**
    - Shows coins collected during the round
    - Displays how coins were split between player and virtual character
    - Updates total score for the player
 
-![Screenshot placeholder: Round results screen showing coin collection and distribution]
 
 #### Character Behavior Patterns
 
@@ -108,8 +99,6 @@ The main study focuses on tracking:
 - **Final Results**: Shows player's accumulated total score across all rounds
 - **Achievement Recognition**: Celebrates player's performance
 - **Data Recording**: All choices and scores are saved for research analysis
-
-![Screenshot placeholder: Final score screen with total coins collected and completion celebration]
 
 #### Session End
 - **Study Completion**: Game session officially ends

@@ -12,6 +12,7 @@ The User Management System is a React-based web application for creating, editin
 ## User Management Interface
 
 **URL**: [https://co-op-user-management-791222378113.europe-central2.run.app](https://co-op-user-management-791222378113.europe-central2.run.app){:target="_blank"}
+![Form Example](../../assets/new_user_form.png)
 
 The interface provides two main tabs:
 - **Create Users**: Create new user accounts with custom settings
