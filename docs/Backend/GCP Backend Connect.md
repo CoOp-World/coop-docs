@@ -7,22 +7,36 @@ parent: Backend
 
 # GCP Backend Connect
 
-To connect to gcp you need to go to your search engine and search for "GCP" and click on the "GCP" site.
+To access GCP, go directly to the Google Cloud Console:
+
+**URL**: [https://console.cloud.google.com](https://console.cloud.google.com)
+
+## Step 1: Login
+
+Log in with your Google account. You will see the GCP console home page.
 
 ![GCP](../../assets/gcp.png)
 
-Now you after you login you will see the following screen. You need to click on the "Console" button in the top right corner.
+## Step 2: Open the Console
+
+Click the **Console** button in the top right corner to access the main dashboard.
 
 ![GCP](../../assets/gcp_2.png)
 
-Now you will see the following screen. You need select the project you want to use in the top left corner.
+## Step 3: Select Your Project
+
+In the top left corner, select the project you want to work with.
 
 ![GCP](../../assets/gcp_3.png)
 
-Now you will see the following screen. You need to click on the "All" tab then search for the project co-op-world-game and click on it. If you don't see the project you need to contact the admin to add you to the project.
+## Step 4: Find the co-op-world-game Project
+
+Click the **All** tab and search for "co-op-world-game". If you don't see this project, contact an admin to be added to it.
 
 ![GCP](../../assets/gcp_4.png)
 
-Now you will see the following screen. Which means that you are connected to the project.
+## Step 5: Confirm Connection
+
+You are now connected to the project.
 
 ![GCP](../../assets/gcp_5.png)

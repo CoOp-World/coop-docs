@@ -7,12 +7,13 @@ parent: MongoDB
 
 # Access
 
-To connect to mongoDB you need to look in the notion docs for document called "MongoDB connection" there you will find the connection string and the credentials.
+To connect to MongoDB, refer to the Notion documentation titled "MongoDB connection" for the connection string and credentials.
 
-There two types of connection strings:
+## Connection Types
 
-- read only
-- read and write
+There are two types of connection strings:
 
-The read only connection string is used to read the data from the database and the read and write connection string is used to read and write the data to the database. **This strings are only for dev purposes to the functions in the cloud run there is a string in the the enviroment variables in the cloud run (in each function)**
-The strings not have the password in the connection string. The password is in the dropbox file in the document in the notion docs.
+- **Read-only**: Used to read data from the database
+- **Read and write**: Used to read and write data to the database
+
+**Important**: These connection strings are for development purposes only. Cloud Run functions use environment variables for their connection strings (defined individually for each function). The connection strings do not include the password; refer to the Dropbox file linked in the Notion documentation for passwords.

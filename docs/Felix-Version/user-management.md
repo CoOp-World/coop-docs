@@ -63,7 +63,7 @@ Click **"Add User Entry"** to create user groups. Each entry contains:
   - Access to enhanced debugging information
   - Additional UI elements for monitoring
 
-#### Request Setting - NOT RELEVANT FOR FELIX'S VERSION
+#### Request Enabled Setting - NOT RELEVANT FOR FELIX'S VERSION
 
 ### Session Configuration Options
 

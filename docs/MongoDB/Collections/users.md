@@ -8,7 +8,7 @@ grand_parent: MongoDB
 
 # `users` Collection
 
-This collection stores documents related to users cretaed for the therapist web application. It includes user credentials and roles.
+This collection stores documents related to users created for the therapist web application. It includes user credentials and roles.
 
 ## Schema
 

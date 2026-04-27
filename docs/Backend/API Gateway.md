@@ -7,31 +7,35 @@ parent: Backend
 
 # API Gateway
 
-In serverless architecture each function has its own url. So to bind the functions to a single url we use the API Gateway.
+In serverless architecture, each function has its own URL. The API Gateway binds multiple functions to a single URL, simplifying client access.
 
-## How to create a new API Gateway
+## How to Create a New API Gateway
 
-To create a new API Gateway you need to go to GCP API Gateway and then click on the "Create Gateway" button.
+1. Go to GCP API Gateway and click "Create Gateway".
 
 ![Create Gateway](../../assets/create_gateway.png)
 
-Now you need to fill the form of the API Gateway. And choose the api file. In the select a service account you need to select the gitub service account.
-
+2. Fill in the gateway form:
+   - Select your API specification file
+   - Choose the GitHub service account
+   
 ![Create Gateway](../../assets/create_gateway_2.png)
 
-Now you need to fill the name again, choose the region and click on the "Create gateway" button.
+3. Enter the gateway name, select the region, and click "Create gateway".
 
 ![Create Gateway](../../assets/create_gateway_3.png)
 
-## How to update the API Gateway
+## How to Update the API Gateway
 
-To update the API Gateway you need to go to the folder you have the new api file. And run the following command:
+To update the API Gateway:
+
+1. From the directory containing your updated API specification file, run:
 
 ```bash
 gcloud api-gateway api-configs create "config-name" --api="api-name" --openapi-spec="openapi-spec-path" --project="project-name"
 ```
 
-Example:
+**Example:**
 
 ```bash
 gcloud api-gateway api-configs create coop-game-config-v8 \
@@ -40,29 +44,17 @@ gcloud api-gateway api-configs create coop-game-config-v8 \
     --project=co-op-world-game
 ```
 
-Now you need to go to the API Gateway and click on the gateway you want to update.
+2. In the GCP console, navigate to the API Gateway and select the gateway you want to update.
 
-![Update Gateway](../../assets/create_gateway.png)
+3. Go to the "API Configs" tab and verify the new configuration appears.
 
-Now you need go to the "API Configs" tab to see that the new config is created.
+4. In the "Gateway" tab, select your gateway and click "Edit".
 
-![Update Gateway](../../assets/update_gateway_2.png)
+5. Choose the new configuration and click "Update".
 
-Now you need to go to the "Gateway" tab and click on the gateway you want to update.
+The gateway will update within a few moments.
 
-![Update Gateway](../../assets/update_gateway_3.png)
-
-Now click on edit.
-
-![Update Gateway](../../assets/update_gateway_4.png)
-
-Now you need to choose the config you want to use and click on the "Update" button.
-
-![Update Gateway](../../assets/update_gateway_5.png)
-
-And after some time you will see that the gateway is updated.
-
-## Api example yaml file
+## API Specification Example (YAML)
 
 ```yaml
 swagger: "2.0"
@@ -75,7 +67,7 @@ host: "co-op-api-copy-a3hddi81.ew.gateway.dev"
 schemes:
   - "https"
 
-# Important for Google API Gateway (If you need to use cors in the serverless functions)
+# Important for Google API Gateway (Required if using CORS in serverless functions)
 x-google-endpoints:
   - name: "co-op-api-copy-a3hddi81.ew.gateway.dev"
     allowCors: true

@@ -7,36 +7,56 @@ parent: Backend
 
 # Create Container
 
-To create a container you need to have the following files in the repository:
+## Prerequisites
 
-- Dockerfile
-- cloudbuild.yaml
-- nginx.conf
+Ensure your repository contains the following files:
 
-To connect the gcp project to the github repository, you need to go to GCP cloud run and then click on the "Connect repo" button.
+- `Dockerfile`
+- `cloudbuild.yaml`
+- `nginx.conf`
+
+## Deployment Steps
+
+### 1. Connect Repository to GCP Cloud Run
+
+Go to GCP Cloud Run and click the "Connect repo" button.
 
 ![Connect repo](../../assets/connect_repo.png)
 
-Click on the "Set up with Cloud Build" button.
+### 2. Set Up Cloud Build
+
+Click "Set up with Cloud Build".
 
 ![Set up with Cloud Build](../../assets/set_up_with_cloud_build.png)
 
-Choose the repository you want to deploy. If you dont see the repository you need to click on the "Manage connected repositories" button. After you selected the repository you need to click on the "Next" button.
+### 3. Select Repository
+
+Choose the repository you want to deploy. If you don't see your repository, click "Manage connected repositories" first. Then click "Next".
 
 ![Select repository](../../assets/select_repository.png)
 
-Now you choose the branch you want to deploy, And choose Dockerfile and click on the "Save" button.
+### 4. Configure Deployment
+
+1. Select the branch to deploy
+2. Choose the Dockerfile
+3. Click "Save"
 
 ![Dockerfile](../../assets/dockerfile.png)
 
-Now you choose the region you want to deploy the repo to and choose Allow unauthenticated invocations.
+### 5. Choose Region and Settings
+
+Select the region where you want to deploy the container and choose "Allow unauthenticated invocations".
 
 ![Region](../../assets/region.png)
 
-Now you need to change the port (if you use the ngnix in the co-op-client) to port 80 then click on the "Create" button.
+### 6. Configure Port (if needed)
+
+If you're using nginx with co-op-client, change the port to 80, then click "Create".
 
 ![Deploy](../../assets/deploy.png)
 
-Then after some time you will see the repo deployed and you can access it from the url.
+After a few moments, your container will be deployed and accessible via the provided URL.
 
-**Every time you push a new commit to the repository to the branch you choose the container will be updated.**
+## Automatic Updates
+
+Every time you push a new commit to your selected branch, the container will automatically update.
