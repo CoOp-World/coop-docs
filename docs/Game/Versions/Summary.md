@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Versions
+title: Summary
 nav_order: 1
-parent: Game
+parent: Versions
 ---
 
 # Versions

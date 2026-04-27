@@ -1,3 +1,10 @@
+---
+layout: default
+title: Version Creation
+nav_order: 2
+parent: Versions
+---
+
 ## How to Create a New Version
 
 To create a new version:
