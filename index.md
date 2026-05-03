@@ -38,6 +38,8 @@ The Coop Game is an innovative blend of various technologies designed to create 
    - [GitHub Repository](https://github.com/CoOp-World/Co-op-user-management){:target="\_blank"}
 6. **Coop Game**: This service is used to run the game.
    - [GitHub Repository](https://github.com/CoOp-World/CO-OP-client){:target="\_blank"}
+7. **Repository Documentation**: A repository-by-repository guide that explains what each codebase does, how it works, and how it fits into the project.
+   - [Repository Docs](docs/Repositories/){:target="\_blank"}
 
 ## Getting Started with Coop Game Development
 

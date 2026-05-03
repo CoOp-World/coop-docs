@@ -2,8 +2,7 @@
 layout: default
 title: Summary
 nav_order: 1
-parent: Versions
-grand_parent: Game
+parent: Game
 ---
 
 # Summary
@@ -29,6 +28,5 @@ This is a summary of all the current available websites, grouped into game versi
 | co-op-parents-dashboard | [Link](https://co-op-parents-dashboard-791222378113.europe-central2.run.app){:target="\_blank"}                                                        | Game parents dashboard that gets the user ID and returns the statistics                  | -      | -        | [CO-OP-parents-dashboard](https://github.com/CoOp-World/Co-Op-Parents-Dashboard){:target="\_blank"} |
 | co-op-user-management   | [Link](https://co-op-user-management-791222378113.europe-central2.run.app){:target="\_blank"}                                                          | Interface to create users, edit their properties, and view user information              | -      | -        | [CO-OP-user-management](https://github.com/CoOp-World/Co-op-user-management){:target="\_blank"} |
 | co-op-website           | [Link](https://co-op-website-791222378113.europe-central2.run.app){:target="\_blank"} or [coopworld.net](https://www.coopworld.net){:target="\_blank"} | The Co-op World website with game information and project details                        | -      | -        | [CO-OP-website](https://github.com/CoOp-World/Co-Op-Website){:target="\_blank"} |
-| co-op-therapist-interface | [Link](https://co-op-therapist-interface-791222378113.europe-central2.run.app/login){:target="\_blank"} | Therapist dashboard for monitoring all users in a study and reviewing statistics | - | - | [CO-OP-therapist-interface](https://github.com/CoOp-World/CO-OP-therapist-interface){:target="\_blank"} |
 | felix-test-gap-speed    | [Link](https://co-op-change-speed-and-gap-791222378113.us-central1.run.app){:target="\_blank"}                                                         | Interface for Felix to change the gap between coins and the speed of the virtual players in his version of the game | 16     | 1369     | [CO-OP-change-speed-and-gap](https://github.com/CoOp-World/CheckDiffrentSpeed){:target="\_blank"} |
 | co-op-qa                | [Link](https://co-op-qa-791222378113.europe-west1.run.app/){:target="\_blank"}                                                                        | QA system for checking the virtual player strategy after the fact                        | -      | -        | [CO-OP-qa](https://github.com/CoOp-World/Co-Op-QA){:target="\_blank"} |

@@ -1,9 +1,12 @@
 ---
 layout: default
 title: Version Creation
-nav_order: 2
+nav_order: 1
 parent: Versions
+grand_parent: Game
 ---
+
+# Version Creation
 
 ## How to Create a New Version
 
@@ -29,26 +32,26 @@ To connect the GCP project to the GitHub repository:
 
 1. Go to GCP Cloud Run and click the "Connect repo" button.
 
-![Connect repo](../../assets/connect_repo.png)
+![Connect repo]({% link assets/connect_repo.png %})
 
 2. Click the "Set up with Cloud Build" button.
 
-![Set up with Cloud Build](../../assets/set_up_with_cloud_build.png)
+![Set up with Cloud Build]({% link assets/set_up_with_cloud_build.png %})
 
 3. Choose the repository to deploy. If you don't see your repository, click "Manage connected repositories" first. Then click "Next".
 
-![Select repository](../../assets/select_repository.png)
+![Select repository]({% link assets/select_repository.png %})
 
 4. Select the branch to deploy, choose Dockerfile, and click "Save".
 
-![Dockerfile](../../assets/dockerfile.png)
+![Dockerfile]({% link assets/dockerfile.png %})
 
 5. Choose the region for deployment and select "Allow unauthenticated invocations".
 
-![Region](../../assets/region.png)
+![Region]({% link assets/region.png %})
 
 6. If you're using nginx with co-op-client, change the port to 80, then click "Create".
 
-![Deploy](../../assets/deploy.png)
+![Deploy]({% link assets/deploy.png %})
 
 After a few moments, your game will be deployed and accessible via the provided URL.

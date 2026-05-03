@@ -1,8 +1,30 @@
 ---
 layout: default
-title: Game Flow & Overview
-nav_order: 1
-parent: Felix Version
+title: Felix
+nav_order: 7
+parent: Versions
+grand_parent: Game
+---
+
+# exp-felix - Felix Experiment
+
+Felix's experimental version of the Coop Game is designed to study children's decision-making patterns when choosing between virtual characters with different cooperation behaviors. The game follows a structured flow from introduction to character selection rounds.
+
+## Access Information
+
+- **Game URL**: [https://exp-felix-791222378113.us-central1.run.app](https://exp-felix-791222378113.us-central1.run.app){:target="_blank"}
+- **Repository Branch**: `prod-Felix-exp`
+- **Supported User IDs**: 1913, 8918
+
+## Game Details
+
+| Property | Value |
+|----------|-------|
+| **Levels Available** | 0, 11-13 |
+| **Supported User IDs** | 1913, 8918 |
+| **Region** | US Central 1 |
+| **Status** | Production |
+
 ---
 
 # Felix Version - Game Flow & Overview
@@ -23,7 +45,7 @@ Felix's experimental version of the Coop Game is designed to study children's de
 - System loads user configuration and session data
 - Master users see level progression counter (Level: X/Y) in top-left corner
 
-![Login Screen](../../assets/login_screen.png)
+![Login Screen]({% link assets/login_screen.png %})
 
 #### Tutorial Level (Level 0)
 - **Purpose**: Teach basic game controls and mechanics
@@ -66,7 +88,7 @@ Each of the 7 rounds follows this pattern:
    - Cooperation mechanics determine success
    - Coin splitting happens according to chosen character's behavior
 
-![Gameplay Showcase](../../assets/gameplay_showcase.png)
+![Gameplay Showcase]({% link assets/gameplay_showcase.png %})
 
 3. **Results Display**
    - Shows coins collected during the round

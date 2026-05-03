@@ -15,10 +15,11 @@ Currently, there are four user variants:
 
 | User Type | Description | Notes |
 | --- | --- | --- |
-| Felix | No help requests; the player only chooses the virtual player. | Most minimal interaction flow. |
-| Deaf | Non-noisy TFT with an introduction level plus 6 regular levels. | Use for the deaf version of the game. This is also the default session order if none is selected. |
-| Macedonia - Anna | Noisy TFT with an introduction level plus 7 regular levels. | Use for Anna's Macedonia setup. |
-| Full TFT | Non-noisy TFT with an introduction level plus 7 regular levels. | Default full TFT version. |
+| Felix | No help requests; the player only chooses the virtual player. | Most minimal interaction flow. Played in English and Hebrew |
+| Deaf | Non-noisy TFT with an introduction level plus 6 regular levels. | Use for the deaf version of the game. This is also the default session order if none is selected. Played in Hebrew |
+| Macedonia - Anna | Noisy TFT with an introduction level plus 7 regular levels. | Use for Anna's Macedonia setup. Played in Macedonian |
+| Autistic (Same as Ana) | Noisy TFT with an introduction level plus 7 regular levels. | Use for Anna's Macedonia setup. |
+| Full TFT | Non-noisy TFT with an introduction level plus 7 regular levels. | Default full TFT version. Played in Hebrew |
 
 ## Session Orders
 
@@ -35,6 +36,7 @@ The current session orders shown in the UI are:
 | Deaf-Version | 1-6 | TFT |
 | FullTFT | 0, 1-7 | TFT |
 | Macedonia - Anna | 0, 21-27 | ProbibalisticTFT |
+| Autistic | 0, 21-27 | ProbibalisticTFT |
 | exp-felix-with-backgrounds | 0, 30-36 | - |
 | exp-felix-one-background | 0, 13 × 7 | - |
 | exp-felix-short | 0, 13 × 2 | - |
