@@ -30,6 +30,11 @@ Gemini TTS model to generate a matching audio to the text response. Both text an
 This function relies on Shared Modules (`decision_explanation` and `validation`) located in the repository's `shared` folder.
 More on that in the [Shared Modules section (PUT CORRECT LINK!)](https://github.com/co-op-world/co-op-world-game/blob/main/docs/Backend/Functions/shared-modules.md).
 
+Note that the Shared Module defines base abstract classes `LLMTextProvider` and `LLMAudioProvider` for text and audio generation, respectively.
+This is so switching between different LLM providers will be as simple as creating new implementations of these abstract classes.
+Currently, the Gemini API is used for both text and audio generation, with the `GeminiTextProvider` and `GeminiAudioProvider` classes
+that inherit from the base provider classes.
+
 ## Environment Variables
 
 The function's behavior is configurable via environment variables defined in its config.json:
@@ -38,7 +43,7 @@ The function's behavior is configurable via environment variables defined in its
 * `GEMINI_AUDIO_MODEL` (e.g., `gemini-2.5-flash-tts`): Specifies the Text-to-Speech generation model.
 * `INSTRUCTIONS_FILE` / `PROMPT_FILE`: Paths to the `.txt` templates used to construct the system instructions and user prompts dynamically.
 * `FIRESTORE_DATABASE` / `FIRESTORE_COLLECTION`: Define where the session contexts are stored and retrieved from.
-Currently points to our `decision-contexts` Firestore database, which is updated mid-game with game events that this function is using.
+  Currently points to our `decision-contexts` Firestore database, which is updated mid-game with game events that this function is using.
 
 ## 📥 Expected Input
 
@@ -55,7 +60,7 @@ Currently points to our `decision-contexts` Firestore database, which is updated
 - `request_num` _integer_ (optional): The sequential number of the current request. Used to fetch specific persona configurations if defined in the level's LLM config.
 - `is_debug` _boolean_ (optional, default `false`): Provide this with a `true` value to bypass the Gemini API call and receive static dummy messages. Used for debugging connections. Should not be used in production.
 
-### Example rquest body
+### Example request body
 
 ```json
 {
@@ -79,20 +84,23 @@ The function operates in the following sequence:
 2. Queries the `decision_contexts` Firestore database using this document ID: `{user_id}_{level_num}_{session_id}`.
 3. Retrieves game context from that document (e.g., past events, strategy, language, genders) and determines the appropriate virtual persona.
 4. Replaces placeholders in the `INSTRUCTIONS_FILE` and `PROMPT_FILE` templates with the retrieved context.
-5. Calls the Gemini Text API to generate the NPC's text response.
-6. Calls the Gemini Audio API to generate a TTS audio file of the response.
-7. Returns both the text and audio payload to the client. Note: if audio generation fails, no error is
-   returned, and only the text response is returned. This is because audio is not as important as the text itself, and to
-   avoid unnecessary fallback to the default response.
+5. Calls the Gemini Text API (`GeminiTextProvider`) to generate the NPC's text response.
+6. Calls the Gemini TTS API (`GeminiAudioProvider`) to generate audio of the response.
+7. Returns both the text and audio payload to the client.
 
 ### Example Successful Response
 
-Upon success, the payload will contain the generated text and the encoded audio:
+Upon success, the payload will contain the generated text and the encoded audio.
+The audio file is a MP3, base64-encoded string.
+
+**Note:** If audio generation fails, no error is returned. `audio` will be `null` in the response, and only the text
+response will be returned. This is because audio is not as important as the text itself, and to avoid unnecessary
+fallback to the default response.
 
 ```json
 {
   "text": "I need to save my ice cubes since I helped you last time and you didn't help me before.",
-  "audio": "<base64_encoded_audio_string_or_url>",
+  "audio": "<base64_encoded_audio_string>",
   "is_debug": false
 }
 ```
