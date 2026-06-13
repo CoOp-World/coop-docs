@@ -28,8 +28,9 @@ mention it if it refuses to help).
 
 The use of LLM-generated responses is dynamic, meaning we can control when we want LLM responses and when we want the
 static responses. It's done by providing an LLM configuration file when creating custom session orders in
-the [User Management website]({% link /docs/Addons/User%20Management.md %}). There are thorough explanations about
-the [LLM Config]({% link LLMConfig.md %}) and the [Runtime Flow]({% link RuntimeFlow.md %}) in the appropriate pages.
+the [User Management website]({% link docs/Addons/User Management.md %}). There are thorough explanations about
+the [LLM Config]({% link docs/AI & LLM Integration/LLMConfig.md %}) and the
+[Runtime Flow]({% link docs/AI & LLM Integration/RuntimeFlow.md %}) in the appropriate pages.
 
 ---
 
@@ -60,4 +61,5 @@ appropriate Cloud Functions. Currently, the relevant functions are `generate-dec
 `mock-decision-explanation`. The models they use are defined as ENV variables in `config.json`.
 
 **Model updates need to be done with care**, it's not just changing version numbers.
-More details and insights about updating the models can be found in the [Insights Page]({% link Insights.md %})
+More details and insights about updating the models can be found in the
+[Insights Page]({% link docs/AI & LLM Integration/Insights.md %})

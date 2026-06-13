@@ -16,7 +16,7 @@ nav_order: 26.5
 
 ## 🛠️ What the Function Is Doing
 
-The function is used in the [User Management]({% link /docs/Addons/User%20Management.md %}) website to test and simulate
+The function is used in the [User Management]({% link docs/Addons/User Management.md %}) website to test and simulate
 NPC personas. Instead of creating test users and running the actual game, this function accepts mock game data and
 generates an explanation that would have been shown to the player. It currently uses the Gemini API to return a text
 explanation and an optional audio response.
@@ -26,7 +26,7 @@ simulate AI responses, while the other is used inside the actual game by the fro
 
 ### Shared Modules & Deployment
 
-This function utilizes [Shared Modules]({% link /docs/Backend/SharedModules.md %}), specifically `decision_explanation`
+This function utilizes [Shared Modules]({% link docs/Backend/SharedModules.md %}), specifically `decision_explanation`
 and `validation`, located in the `shared` folder. The `validation` module is used to validate the function's parameters,
 and the `decision_explanation`module contains the Text and Audio generation framework.
 

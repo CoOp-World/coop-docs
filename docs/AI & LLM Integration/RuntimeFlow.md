@@ -18,9 +18,9 @@ moment the child hears the NPC speak.
 ## Phase 1: Initialization and Config Loading
 
 When a child logs into the game using their user code, the Game Client (Phaser) retrieves the user's data from the
-backend. If their user was created with a Session Order that includes [LLM Config]({% link LLMConfig.md %}) (originally
-uploaded as a YAML file), it is included in the user data and loaded as well as. The client holds this configuration in
-memory to evaluate future interactions.
+backend. If their user was created with a Session Order that includes
+[LLM Config]({% link docs/AI & LLM Integration/LLMConfig.md %}) (originally uploaded as a YAML file), it is included in
+the user data and loaded as well as. The client holds this configuration in memory to evaluate future interactions.
 
 ## Phase 2: Context Committing
 
@@ -87,7 +87,7 @@ The `generate-decision-explanation` function receives the request payload contai
    file.
 
 _(More details about `generate-decision-explanation` can be found in the [Cloud Function
-documentation]({% link /docs/Backend/Functions/generate-decision-explanation.md %}))_
+documentation]({% link docs/Backend/Functions/generate-decision-explanation.md %}))_
 
 ## Phase 5: Rendering and Playback
 

@@ -29,7 +29,7 @@ text response. Both text and audio are returned to the client.
 ## Shared Modules & Deployment
 
 This function relies on Shared Modules (`decision_explanation` and `validation`) located in the repository's `shared`
-folder. More on that in the [Shared Modules section)]({% link /docs/Backend/SharedModules.md %}).
+folder. More on that in the [Shared Modules section)]({% link docs/Backend/SharedModules.md %}).
 
 Note that the Shared Module defines base abstract classes `LLMTextProvider` and `LLMAudioProvider` for text and audio
 generation, respectively. This is so switching between different LLM providers will be as simple as creating new

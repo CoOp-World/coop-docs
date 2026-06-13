@@ -55,7 +55,7 @@ Why we made the switch:
 * **Upgrade Backend Infrastructure:** The `generate-decision-explanation` Cloud Function wasn't structured very well
   when GPT was used. Transitioning to Gemini required restructuring many parts of the code to switch to the new API.
   We took the opportunity to refactor the entire function's infrastructure to be more modular and maintainable.
-  Most of the code was transferred to the `decision_explanation` [Shared Module]({% link /docs/Backend/SharedModules.md %}).
+  Most of the code was transferred to the `decision_explanation` [Shared Module]({% link docs/Backend/SharedModules.md %}).
   In addition, text and audio generation logic was extracted to abstract classes `LLMTextProvider` and
   `LLMAudioProvider` respectively. That way, switching a text or audio model is as simple as creating a new class
   that implements `LLMTextProvider` or `LLMAudioProvider`. Many helpers and helper services were also extracted to
