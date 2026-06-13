@@ -10,6 +10,8 @@ parent: AI & LLM Integration
 This page overviews how AI & LLMs are integrated in the system, briefing through their usage in the system. The other
 pages in this section expand on that in detail.
 
+**If you make any changes regarding AI/LLM integration, please update the pages in this section accordingly.**
+
 ## Introduction
 
 Previously, the virtual player (NPC) responded to help requests using static, pre-recorded audio and
@@ -46,3 +48,16 @@ The integration touches several systems:
 * **GCP Backend Functions:** Cloud Functions (specifically `generate-decision-explanation`) act as the bridge. They
   receive a trigger from the game client, pull the level's context from Firestore, apply the correct persona from the
   LLM config, and communicate with the Gemini Text and Audio APIs to generate the final response.
+
+---
+
+## Maintenance (Important)
+
+Currently, the generated responses are powered by Gemini text and TTS models. The models are updated periodically,
+and as a result, old models are getting deprecated (for example, with the launch of Gemini 3 series, series 2.5 is
+getting deprecated a few months afterward). That's why we need to keep an eye on the models and update them in the
+appropriate Cloud Functions. Currently, the relevant functions are `generate-decision-explanation` and
+`mock-decision-explanation`. The models they use are defined as ENV variables in `config.json`.
+
+**Model updates need to be done with care**, it's not just changing version numbers.
+More details and insights about updating the models can be found in the [Insights Page](Insights.md)

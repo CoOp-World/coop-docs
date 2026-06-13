@@ -31,6 +31,8 @@ principles:
   response - mention that you help/reject because, or despite the child helped/rejected you last time."
 * **Leave Room for Creativity:** Give the AI the rules and the tone, but let it choose the exact words. Avoid forcing it
   to say one specific, hardcoded sentence every time.
+* **Try Different Phrasings:** If a persona doesn't work as you expect, try slightly different variations and phrasings.
+  Use the "Prompt Playground" tab in the User Management website to test you personas.
 
 **Note:** The LLM is familiar with the game, so you shouldn't explain the game or include technical details in the
 persona. Your persona is not sent as-is to the LLM, but rather wrapped with a prompt that explains the game rules, which
