@@ -6,15 +6,13 @@ parent: AI & LLM Integration
 ---
 
 # Insights & Maintenance
-
 {: .no_toc }
 
 ## Table of Contents
-
 {: .no_toc .text-delta }
 
-- TOC
-  {:toc}
+1. TOC
+{:toc}
 
 ---
 
