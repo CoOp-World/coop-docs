@@ -57,7 +57,7 @@ Why we made the switch:
 * **Upgrade Backend Infrastructure:** The `generate-decision-explanation` Cloud Function wasn't structured very well
   when GPT was used. Transitioning to Gemini required restructuring many parts of the code to switch to the new API.
   We took the opportunity to refactor the entire function's infrastructure to be more modular and maintainable.
-  Most of the code was transferred to the `decision_explanation` [Shared Module](/docs/Backend/SharedModules.md).
+  Most of the code was transferred to the `decision_explanation` [Shared Module]({% link /docs/Backend/SharedModules.md %}).
   In addition, text and audio generation logic was extracted to abstract classes `LLMTextProvider` and
   `LLMAudioProvider` respectively. That way, switching a text or audio model is as simple as creating a new class
   that implements `LLMTextProvider` or `LLMAudioProvider`. Many helpers and helper services were also extracted to
@@ -84,7 +84,7 @@ themselves in the `decision_explanation` Shared Module in the Cloud Functions re
 {: .no_toc }
 
 * Sometimes it was "too creative" and deviated from the intended language. For example, it once used nicknames like
-  "buddy" and "pal" to refer the child, which we didn't want. Sometimes rephrasing the instructions helped.
+  "buddy" and "pal" to refer to the child, which we didn't want. Sometimes rephrasing the instructions helped.
   but sometimes you may need to prohibit this explicitly in the instructions.
 * Sometimes its responses weren't diverse enough. The reason for that may be too many restrictions in the instructions.
   It's important to not restrict it too much and give it some room for creativity. In addition, the instructions
@@ -105,8 +105,8 @@ When a new Gemini model is released (e.g., moving from `gemini-3.5-flash` to a n
    [official model availability documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations)
    to ensure the target model is available in our deployed region. It's preferred that the region will be the same or as
    close as possible to the region of the cloud function (`europe-central2`). Sometimes models are first launched in
-   "multi region" regions, like `eu` instead of specific regions in Europe. Multi regions have different API endpoint
-   that requires some minor modifications to the Vertex AI Client initialization.
+   "multi region" regions, like `eu` instead of specific regions in Europe. Multi regions have different API endpoints
+   that require some minor modifications to the Vertex AI Client initialization.
 
    If a new model is only available in a specific region, you must update the `location` parameter in the `Client()`
    initialization inside `main.py`, and potentially the `http_options={"base_url": ...}` if routing through a specific

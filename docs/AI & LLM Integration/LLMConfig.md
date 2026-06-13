@@ -78,7 +78,7 @@ Let's say you built a Session Order in the UI with two sessions.
 Here is how you would structure a config file for this. Notice the comment lines starting with `#` and the indentations.
 
 **Note:** The personas used here are just examples and are not written well. A guide on how to write a good persona can
-be found on the [Persona Guide](PersonaGuide.md) page.
+be found on the [Persona Guide]({% link PersonaGuide.md %}) page.
 
 ```yaml
 # Global defaults
