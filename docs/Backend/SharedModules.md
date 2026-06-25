@@ -94,7 +94,7 @@ Open the function's `config.json` and add the module name to a `shared_modules` 
 ```
 Here we are requesting the `validation` and `decorators` modules, as an example.
 
-_(Note: You do not need to list common; it is injected automatically)_
+_(Note: You do not need to list `common`; it is injected automatically)_
 
 ### 3. Import the Module
 

@@ -85,8 +85,9 @@ themselves in the `decision_explanation` Shared Module in the Cloud Functions re
   "buddy" and "pal" to refer to the child, which we didn't want. Sometimes rephrasing the instructions helped.
   but sometimes you may need to prohibit this explicitly in the instructions.
 * Sometimes its responses weren't diverse enough. The reason for that may be too many restrictions in the instructions.
-  It's important to not restrict it too much and give it some room for creativity. In addition, the instructions
-  shouldn't dictate too much HOW it should respond; this is the role of the persona and the LLM itself.
+  It's important to not restrict it too much and give it some room for creativity; it can cause it to give repetitive
+  responses. In addition, the instructions shouldn't dictate too much HOW it should respond; this is the role of the
+  persona and the LLM itself.
 
 ## Update and Maintain Models
 
@@ -126,6 +127,73 @@ When a new Gemini model is released (e.g., moving from `gemini-3.5-flash` to a n
    it's working as expected and similar to the old model so the game's experience won't change significantly. Only
    when you're sure that the new model is working as expected, you can deploy it.
 
+## Supporting New Languages
+
+If you want to support more languages in the game and in LLM responses in particular, the system must be updated to
+support that. Languages are saved on user creation when you create users in the User Management website. When a user
+enters the game, the game client loads the user data along with the user's language, and that is used to display
+language-specific sprites and voice recordings in the game, but also used in the backend to generate LLM responses in
+that language.
+
+### 1. Update Cloud Functions
+{: .no_toc }
+
+In the `CloudFunctions` repo, in `shared/decision_explanation/providers/llm_audio_provider/gemini_audio_provider.py`,
+under the `GeminiAudioProvider` class you'll see two maps related to languages: `VoiceMap` and `LanguageToCodeMap`.
+* `LanguageToCodeMap` maps between language name (what is used in the User Management website and what is saved in the
+  DB) and the language code. For example, "English" → "en-us". Add an entry with the new language and its code.
+
+  The language must be supported by the Gemini TTS model that the backend uses (model names are in the cloud function's
+  `config.json` file). You may visit [this website](https://docs.cloud.google.com/text-to-speech/docs/gemini-tts)
+  for the list of supported languages by model. Check the language code of the language you want to support.
+* `VoiceMap` maps between language code and voice names to be used in Gemini TTS. It allows us to have different voices
+  for each language and gender.
+  Add an entry with the new language code and two male and female voice names. Gemini's voice names can be found
+  [here](https://ai.google.dev/gemini-api/docs/speech-generation#voices).
+  You can also listen to each voice before deciding,
+  [here](https://docs.cloud.google.com/text-to-speech/docs/gemini-tts#voice_options).
+
+  Note that the language and gender are resolved dynamically at runtime. When creating users, you set their language
+  via the dropdown. When a new user enters the game, they are prompted to choose their gender and virtual gender
+  (NPC's gender). Those are saved as strings "male" or "female" and the _virtual gender_ is used here to resolve the
+  voice name that we give to Gemini TTS.
+
+It is important that the language name and code you define in those maps will match the ones defined in the User
+Management website and the language codes that Gemini supports. The code passes the language **code** to the Gemini TTS
+API, and the prompts we give to the text model instruct it to answer in the desired language (it gives it the language
+**name** saved in the DB), so any mismatch will cause an error or an unexpected response.
+
+### 2. Update User Management website
+{: .no_toc }
+
+In the User Management website, in the main tab `Create Users`, there is a `Language` dropdown that contains all the
+supported languages for creating users. Add the new language to the list in the code.
+
+It is also recommended to add the language to the `Prompt Playground` tab (there is a `Language` dropdown there too),
+so you can also test the LLM responses in that language.
+
+As said, the language name you put here must match the one you put in the `LanguageToCodeMap` map in the cloud function.
+The language name is also what the code passes, as it is, to Gemini when instructing it in what language to answer.
+
+### 3. Game Client (optional)
+{: .no_toc }
+
+The game client displays sprites and voice recordings in multiple languages. It's important to know that the game
+automatically detects the language based on location (and not from the user's saved language). Thus, when adding a new
+language for LLM responses, the game shouldn't break as it uses its own auto-resolved **display language** for
+displaying sprites and messages. However, if you want to support a new **display language** in the game, it involves
+messing with the `i18next` library and adding new sprites and recordings in the appropriate language. There is some
+work there and it has to be done carefully.
+
+### 4. Testing in Prompt Playground (optional)
+{: .no_toc }
+
+When updating languages or making any change to the LLM infrastructure, it is important to test them before pushing them
+to the main game. The two recommended ways to test are either running/debugging locally, or testing in the Prompt
+Playground on the User Management website.
+
+An extended guide about using the Prompt Playground can be found [here]({% link docs/UserManagement/PromptPlayground.md %}).
+
 ## Known Limitations & Future Upgrades
 
 ### Two-Step Latency
@@ -137,7 +205,7 @@ by preloading the server call, so it has plenty of time to respond, and the user
 Keep an eye on Gemini release notes for unified text and audio endpoints to resolve this. It should significantly
 improve latency and cost.
 
-### Future Expansions
+### Game Expansion
 {: .no_toc }
 
 If more events are added to the game, you might want to let the LLM that responds in behalf of the NPC to know about
@@ -147,3 +215,10 @@ them. It will allow the AI to have more reasons and explanations to generate, bu
 Maybe the LLM-related code can be upgraded so events will be modularized so it will be easy to feed the LLM with
 different kinds of game events.
 
+### Voice Commands
+{: .no_toc }
+
+Currently, the "persona" are instructions that are given only for the text generation model. With Gemini TTS it is
+possible to give instructions to the TTS model as well. They make it very easy to control various things like tone and
+voice when requesting audio synthesizing. This means that we can have a "voice persona" that controls the was it speaks
+the generated explanations.

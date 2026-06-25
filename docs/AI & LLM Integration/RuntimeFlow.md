@@ -86,8 +86,8 @@ The `generate-decision-explanation` function receives the request payload contai
 5. **TTS Generation:** The generated text is passed to the `GeminiAudioProvider` model to synthesize the spoken audio
    file.
 
-_(More details about `generate-decision-explanation` can be found in the [Cloud Function
-documentation]({% link docs/Backend/Functions/generate-decision-explanation.md %}))_
+_(More details about `generate-decision-explanation` can be found in its
+[documentation]({% link docs/Backend/Functions/generate-decision-explanation.md %}))_
 
 ## Phase 5: Rendering and Playback
 

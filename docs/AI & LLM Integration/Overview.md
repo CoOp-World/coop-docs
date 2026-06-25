@@ -38,17 +38,25 @@ the [LLM Config]({% link docs/AI & LLM Integration/LLMConfig.md %}) and the
 
 The integration touches several systems:
 
-* **User Management Website:** The starting point. You can upload an LLM Configuration (YAML) file when
-  creating a custom "Session Order". The website parses this file and saves it in MongoDB alongside the user data.
+* **User Management Website:** The starting point. You can upload an
+  [LLM Configuration]({% link docs/AI & LLM Integration/LLMConfig.md %}) (YAML) file when creating a custom
+  "Session Order". The website parses this file and saves it in MongoDB alongside the user data. You can also test
+  LLM personas in the
+  [Prompt Playground tab]({% link docs/Addons/User Management.md %}#-prompt-playground).
 * **Game Client (Phaser Frontend):** When the user logs in, the game loads the LLM configuration that is saved in the
   user's data. It is responsible for checking if an AI response should be triggered for a specific level or request (the
   LLM config dictates that), playing the resulting audio, and rendering the text.
 * **Context Storage (Firestore):** A dedicated database (`decision-contexts`) that holds the live state of the game. The
-  game client continuously commits events (like past help requests, the strategy in use, and genders) to this database
+  game client continuously commits events (like past help requests, the strategy in use, and genders) to this database,
   so the backend has the context needed to prompt the AI.
 * **GCP Backend Functions:** Cloud Functions (specifically `generate-decision-explanation`) act as the bridge. They
   receive a trigger from the game client, pull the level's context from Firestore, apply the correct persona from the
   LLM config, and communicate with the Gemini Text and Audio APIs to generate the final response.
+
+  Another cloud function, `mock-decision-explanation`, is used in the "Prompt Playground" tab in the User Management
+  website. It uses the same underlying logic and Gemini models as `generate-decision-explanation`. However, instead of
+  pulling live game context from the database, it accepts manually entered mock game data. This allows you to
+  **simulate** mid-game calls and refine how a persona will behave before using it in an actual game.
 
 ---
 
@@ -61,5 +69,5 @@ appropriate Cloud Functions. Currently, the relevant functions are `generate-dec
 `mock-decision-explanation`. The models they use are defined as ENV variables in `config.json`.
 
 **Model updates need to be done with care**, it's not just changing version numbers.
-More details and insights about updating the models can be found in the
-[Insights Page]({% link docs/AI & LLM Integration/Insights.md %})
+More details and insights about updating the models can be found in the relevant section in the
+[Insights Page]({% link docs/AI & LLM Integration/Insights.md %}#update-and-maintain-models).
