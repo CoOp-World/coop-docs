@@ -87,6 +87,7 @@ _Instructions on how to write a good persona can be found
 * **Mock Game Data:** Defines the game state you want to simulate.
     * **Recent Events (left panel):** Build a chronological list of previous requests by clicking "+ NPC request" or
       "+ Child request". Those are **previous** events, meaning excluding the request you are simulating now.
+      You can also delete events or drag to reorder them.
       Leaving this empty means you are simulating the first request of the level.
     * **Right panel:** Select the NPC Strategy, Language you want the answer to be in, and the Genders of both players.
       The virtual gender determines the voice used for text-to-speech, and both genders are used for grammatically

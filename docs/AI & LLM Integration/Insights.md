@@ -89,6 +89,10 @@ themselves in the `decision_explanation` Shared Module in the Cloud Functions re
   responses. In addition, the instructions shouldn't dictate too much HOW it should respond; this is the role of the
   persona and the LLM itself.
 
+**Note:** You are encouraged to look for additional ways of prompt engineering in the web. The things written here
+are from personal experience. For example, you may refer to Google's
+[Prompt Design Strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies) article.
+
 ## Update and Maintain Models
 
 As new LLM models gets released and updated, the old ones eventually get deprecated in the API (this is true for every
@@ -216,10 +220,14 @@ them. It will allow the AI to have more reasons and explanations to generate, bu
 Maybe the LLM-related code can be upgraded so events will be modularized so it will be easy to feed the LLM with
 different kinds of game events.
 
-### Voice Commands
+### "Voice Personas"
 {: .no_toc }
 
-Currently, the "persona" are instructions that are given only for the text generation model. With Gemini TTS it is
-possible to give instructions to the TTS model as well. They make it very easy to control various things like tone and
-voice when requesting audio synthesizing. This means that we can have a "voice persona" that controls the was it speaks
-the generated explanations.
+Currently, the "persona" are instructions that are given only for the text generation model. Gemini TTS allows giving
+instructions to TTS models as well. They make it very easy to control various things like tone and voice when requesting
+audio synthesizing. This means that we can have "voice personas" (in addition to the existing personas for text) that
+controls the way it speaks the generated explanations.
+
+Note that we currently do use voice instructions in the code, but they are very basic and only instruct Gemini to speak
+the text grammatically correctly. For example, some words in Hebrew are pronounced differently for males and females,
+even when written identically.
