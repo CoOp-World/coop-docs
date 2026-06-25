@@ -192,7 +192,8 @@ When updating languages or making any change to the LLM infrastructure, it is im
 to the main game. The two recommended ways to test are either running/debugging locally, or testing in the Prompt
 Playground on the User Management website.
 
-An extended guide about using the Prompt Playground can be found [here]({% link docs/UserManagement/PromptPlayground.md %}).
+An extended guide about using the Prompt Playground can be found
+[here]({% link docs/Addons/User Management.md %}#-prompt-playground).
 
 ## Known Limitations & Future Upgrades
 
