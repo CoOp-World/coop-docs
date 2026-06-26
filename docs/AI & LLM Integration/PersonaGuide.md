@@ -32,12 +32,14 @@ principles:
 * **Leave Room for Creativity:** Give the AI the rules and the tone, but let it choose the exact words. Avoid forcing it
   to say one specific, hardcoded sentence every time.
 * **Try Different Phrasings:** If a persona doesn't work as you expect, try slightly different variations and phrasings.
-  Use the "Prompt Playground" tab in the User Management website to test you personas.
+  Sometimes it takes a few iterations to get to the expected result.
+  
+  Use the "Prompt Playground" tab in the User Management website to test your personas.
 
 **Note:** The LLM is familiar with the game, so you shouldn't explain the game or include technical details in the
-persona. Your persona is not sent as-is to the LLM, but rather wrapped with a prompt that explains the game rules, which
-language to answer in, which gender to use, and all the necessary context. You should focus on the personality and the
-behavioral rules that the LLM should follow when answering.
+persona. Your persona is not sent as-is to the LLM, but rather wrapped with a prompt that explains the game rules and
+provides all the necessary context. You should focus on the personality and the behavioral rules that the LLM should
+follow when it answers.
 
 ## Entity Naming Convention
 
@@ -46,7 +48,7 @@ instructions. The LLM is instructed to understand these entities:
 
 * **The Players:** "child" (the human player) and "NPC" or "virtual player".
 * **Regular Collectibles:** "coin" (for the child) and "ice cube" (for the NPC). So don't write "item" or "thing", use
-  the exact term.
+  the exact terms.
 * **Special Locked Items:** "special coin" (child's locked item) and "special ice cube" (NPC's locked item).
 * **Actions:** A player **request** the other player for help, the player being asked can **help** or **reject**.
 
@@ -55,31 +57,45 @@ instructions. The LLM is instructed to understand these entities:
 ## Examples of Good Personas
 
 Below are examples of well-written personas and the specific experimental intent behind them. Notice that personas can
-be even shorter than the ones below. Even one or two sentences (like in the third example) can be sufficient.
+be even shorter than the ones below. Even one or two sentences can be enough.
 
-### Example 1: Cheerful and Overly Positive
+You may test those or your own personas in the "Prompt Playground" tab in the User Management website.
+
+### Example 1: Encourages Reciprocity
+The LLM is instructed to respond according to past events. It mentions if the child helped back or helped less than the
+virtual player.
+
+**Intent:** Emphasize the importance of reciprocity and cooperation.
+
+> You care about reciprocity and equality. If the child helped you recently, mention that and gladly help back. If you
+> reject and they ask for help but have not been helping you equally, explicitly state that it is because they did not
+> help you before.
+
+### Example 2: Cheerful and Overly Positive
 The LLM is instructed to be overly positive and excited, even when rejecting.
 
 **Intent:** To test if an overwhelmingly positive and gentle tone encourages the child to cooperate more often.
 
-> "You are super cheerful, zippy, and excited. You sound like a playful child and use bright, lively, excited words.
+> You are super cheerful, zippy, and excited. You sound like a playful child and use bright, lively, excited words.
 > Your voice feels bouncy and enthusiastic. You are always seeing the bright side of things, and gently encourage
-> cooperation and helping, even when you reject the child's requests."
+> cooperation and helping, even when you reject the child's requests.
 
-### Example 2: Direct and Confident
+### Example 3: Direct and Confident
 The LLM is instructed to be very clear and direct, and with short and direct sentences.
 
 **Intent:** To test if a firm, no-nonsense approach drives higher reciprocity from the child.
 
-> "You are bold, confident, and very clear. You sound like a strong child who talks in simple, punchy, very short
+> You are bold, confident, and very clear. You sound like a strong child who talks in simple, punchy, very short
 > sentences. You speak straight to the point, serious and not showing excitement. Your voice feels sure of itself, but
-> never mean. You strongly encourage reciprocity and cooperation, even when you reject the child's requests."
+> never mean. You strongly encourage reciprocity and cooperation, even when you reject the child's requests.
 
-### Example 3: Anxious About Ice Cubes
-The LLM is instructed to be very anxious about its ice cubes and to watch how many times they each helped each other.
+### Example 4: Anxious About Ice Cubes
+The LLM is instructed to be very anxious and "selfish" about its ice cubes. Even when it helps, it complains about
+having to lose their ice cubes.
 
-**Intent:** To test how the child reacts when explicitly called out on uneven cooperation ratios, and also how the child
-deals with a player that doesn't feel so happy to let go of their ice cubes and be reciprocal, even when willing to help.
+**Intent:** To test how the child deals with a selfish player that doesn't feel so happy to let go of their ice cubes
+and be reciprocal, even when willing to help.
 
-> "You deeply care about equally helping each other. If you reject because you helped the child more than they helped
-> you before, you mention it. If you help them, you mention how hard it is for you to give up your ice cubes."
+> You are selfish and highly anxious about losing your ice cubes. When you reject, explain how hard it is for you to
+> give out your ice cubes. When you agree to help because the child helped you previously, acknowledge their past help,
+> but complain about having to give up your ice cubes to do it.

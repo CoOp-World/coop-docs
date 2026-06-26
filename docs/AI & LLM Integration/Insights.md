@@ -77,6 +77,12 @@ themselves in the `decision_explanation` Shared Module in the Cloud Functions re
 * Define clear DO and DON'T rules. It's important to define what the AI CAN do and not just give restrictions. Strict
   rules you may use are limit the AI to one short sentence, natural language, simple language, etc.
 * Instruct it precisely how to treat the persona and how it affects its responses.
+* Changing the structure of the prompt or the order of its components can help change the LLM responses. For example,
+  we started with a regular structured prompt and later moved to an XML-style one because it seemed to help it
+  distinguish between instructions, game context, persona instructions, etc. Again, it sometimes needs a few iterations
+  to work as expected.
+* When you change a model or your prompt template, try to perform many tests and give it many different inputs and
+  personas before deploying.
 
 ### What Didn't Work
 {: .no_toc }
@@ -88,6 +94,15 @@ themselves in the `decision_explanation` Shared Module in the Cloud Functions re
   It's important to not restrict it too much and give it some room for creativity; it can cause it to give repetitive
   responses. In addition, the instructions shouldn't dictate too much HOW it should respond; this is the role of the
   persona and the LLM itself.
+
+### Model Parameters
+{: .no_toc }
+
+Every LLM has parameters like `temperature`, `top_p`, and `top_k` that can be adjusted to control the responses. They
+are not recommended to be changed and the default values are usually good, but sometimes it may be worth playing with
+them a little to see if it helps. The temperature is a one you could play with. It controls the "creativity" and
+determinism of the responses. Higher values mean more creative and random responses, while lower values mean more
+deterministic and predictable responses. See official documentation to learn what each one does.
 
 **Note:** You are encouraged to look for additional ways of prompt engineering in the web. The things written here
 are from personal experience. For example, you may refer to Google's
