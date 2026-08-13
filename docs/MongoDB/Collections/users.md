@@ -20,5 +20,5 @@ This collection stores documents related to users created for the therapist web 
 | `email`    | string   | User's email address                           |
 | `fullName` | string   | User's full name                               |
 | `localId`  | int      | Local identifier for the user                  |
-| `password` | string   | User's password                                |
+| `password` | string   | User's password (currently stored as plaintext in the database) |
 | `username` | string   | User's username                                |

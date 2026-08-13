@@ -32,10 +32,13 @@ This application is built as a full-stack dashboard:
 
 ## Main Screens
 
+- **Login**: Auth screen with options to register new users or recover credentials.
 - **Patients**: Main landing page with searchable patient cards and progress summaries.
+- **Patient Details**: Detailed view per patient allowing strategies configuration and session progress tracking.
 - **Statistics**: Global analytics for study-level metrics and strategy comparisons.
-- **Strategies**: Strategy configuration and review for each patient and level.
-- **Settings**: Dashboard and application settings.
+- **Strategies**: Informational view detailing the available virtual player strategies and their parameters.
+- **Demographics**: Dynamic population comparison tool to compare custom-filtered groups of participants (e.g. by gender, sector, grade).
+- **Settings**: Dashboard and application settings (experimenter profile updates & password modification).
 
 ## How It Works
 
@@ -73,7 +76,7 @@ The backend is organized with Express routes and MongoDB models.
 - `POST /api/patients` creates a new patient.
 - `PATCH /api/patients/:id` updates patient information.
 - `DELETE /api/patients/:id` removes a patient.
-- `GET /api/game/:patientId` provides game data for external systems.
+- `GET /api/game/:patientId` provides strategy data for external game clients. Requires `therapistId` as a query parameter; can optionally take a `levelId` query parameter to filter for a specific level.
 
 The server uses CORS restrictions so only the expected dashboard and game client origins can call it.
 

@@ -1261,16 +1261,30 @@ The Co-Op QA website runs automatic validation tests on saved game sessions **af
 
 ## How It Works
 
-1. **Select a test suite** corresponding to the experiment or study the user participated in (e.g., Macedonian Study, Felix Version).
-2. **Choose user IDs** or a range of users to validate.
-3. **Run the tests** — the system fetches their session data and runs all checks for that suite.
-4. **View feedback** — results display per-level, showing which tests passed (green), passed with warnings (yellow), or failed (red).
+1. **Select an Input Mode**:
+   - **By User IDs**: Input specific user IDs (comma- or space-separated) to run validation tests on them.
+   - **By Date Range**: Select a start and end date. This queries the level play records on the backend to fetch all users who played levels during that time. The users are sorted/grouped by their **Experimenter** to execute the correct test suite for each user.
+2. **Select Fallback Test Version**: Choose a default/fallback test suite to run in case a user's experimenter is not mapped to a specific suite.
+   - **Automatic Suite Mapping**: If the user's experimenter name is recognized (case-insensitively), it automatically runs the mapped suite, overriding the selected fallback:
+     - **Zohar Atias** $\to$ Full TFT (`fullTft`)
+     - **Full TFT** $\to$ Full TFT (`fullTft`)
+     - **Kasia** $\to$ Felix Version (`felix`)
+     - **Ana** $\to$ Macedonian Study (`macedonian`)
+     - **test** $\to$ Macedonian Study (`macedonian`) & marked as a **Test User**.
+3. **Run the tests** — the system initiates data fetching:
+   - **Primary Fetch**: It requests the user's sessions from the Parents Dashboard endpoint. It always automatically fetches the full records for all levels to ensure a complete picture of the session data.
+   - **Fallback Fetch**: If the Parents Dashboard endpoint returns no requests, it falls back to fetching user records from the `fetchUserInfo` function.
+4. **Duplicate Record Check**: If a level query returns multiple records for the same level number, it outputs a warning and automatically uses the latest record for validation.
+5. **View feedback**:
+   - **Categorization**: Results are grouped and displayed by the specific test suite run.
+   - **Target Date Badge**: Levels actually played within the specified date range bounds are marked with a blue **Target Date** badge.
+   - **Test User Badge**: Users associated with the experimenter `test` are visually labeled with a purple `Test User` badge next to their User ID in the header.
+   - Per-level checks show which tests passed (green), passed with warnings (yellow), or failed (red).
 
 **Understanding Results:**
 - **Green (Pass)**: Test passed all checks.
-- **Yellow (Warning)**: Test passed but with a minor issue detected (e.g., low FPS duration, timing just below threshold). Session is still usable.
-- **Red (Fail)**: Test failed a critical check (e.g., level too short, FPS below minimum, data corruption). Session may need to be excluded from analysis.
-
+- **Yellow (Warning)**: Test passed but with a minor issue detected (e.g., level completed relatively quickly, duplicate level logs). Session is still usable.
+- **Red (Fail)**: Test failed a critical check (e.g., level too short, missing required help requests, invalid TFT behavior, incorrect level count). Session may need to be excluded from analysis.
 
 ## Why Use It
 
@@ -1283,73 +1297,116 @@ The Co-Op QA website runs automatic validation tests on saved game sessions **af
 - **Repository**: [Co-Op QA](https://github.com/CoOp-World/Co-Op-QA){:target="_blank"}
 - **Dashboard URL**: [https://co-op-qa-791222378113.europe-west1.run.app/](https://co-op-qa-791222378113.europe-west1.run.app/){:target="_blank"}
 
-## Test Suites — Summary of which tests are run on each test suite
+---
 
-## Macedonian Study
+## CSV Export Options
 
-- **Description:** Intro + 7 levels; checks help-request counts, TFT behavior, timing, FPS, and level consistency.
-- **Tests run:**
-  - **Help Requests:** verifies `help_requests` array exists, total count, human vs virtual counts (expects 8 total; 4 human, 4 virtual).
-  - **TFT (Tit For Tat):** for each virtual help request, records the human's response; compares the next human request’s acceptance to that prior human response (counts matches and reports %). Should be fluctuating and not 100% always.
-  - **Timestamps & Timing:** parses asking/answer/start/end timestamps, ensures `answer >= asking`, `asking >= level start`, `answer <= level end`, computes level duration and average response time.
-    - If `end_time` is before `start_time`, it shows a warning and uses `0s` duration instead of falling back silently.
-    - If the level duration is under 2 minutes, the test fails.
-    - If the level duration is under 2.5 minutes, it shows a warning.
-  - **Performance / FPS:** asserts `fps_info.avg_fps >= 30` (fail if below), and scans `fps_info.arr` for sustained low-FPS runs (shows warnings for long runs below threshold).
-  - **Level Consistency:** basic validation that `level_key`, `level_num`, and `map_name` are present; if frontend level configs are available, validates they match the expected background/level number.
+After running tests, you can export the analyzed results into two types of CSV reports:
 
-## Autistic Study
+### 1. Download Good CSV
+- **Criteria**: Includes level data only for users who have **fully passing** sessions (no failed checks and no warnings in the summary level checks).
+- **Structure**: Generates a standard flat list of all level parameters, omitting internal/debug identifiers (like MongoDB IDs, screenshot counts, raw textual outputs).
 
-- **Description:** Identical to the Macedonian suite.
-- **Tests run:**
-  - **Help Requests:** verifies `help_requests` array exists, total count, human vs virtual counts (expects 8 total; 4 human, 4 virtual). (same as Macedonian)
-  - **TFT (Tit For Tat):** for each virtual help request, records the human's response; compares the next human request's acceptance to that prior human response (counts matches and reports %). Should be fluctuating and not 100% always. (same as Macedonian)
-  - **Timestamps & Timing:** parses asking/answer/start/end timestamps, ensures `answer >= asking`, `asking >= level start`, `answer <= level end`, computes level duration and average response time.
-    - If `end_time` is before `start_time`, it shows a warning and uses `0s` duration instead of falling back silently.
-    - If the level duration is under 2 minutes, the test fails.
-    - If the level duration is under 2.5 minutes, it shows a warning.
-    (same as Macedonian)
-  - **Performance / FPS:** asserts `fps_info.avg_fps >= 30` (fail if below), and scans `fps_info.arr` for sustained low-FPS runs (shows warnings for long runs below threshold). (same as Macedonian)
-  - **Level Consistency:** basic validation that `level_key`, `level_num`, and `map_name` are present; if frontend level configs are available, validates they match the expected background/level number. (same as Macedonian)
+### 2. Download Problematic CSV
+- **Criteria**: Includes data only for users who have **at least one warning or failure** (in their level checks or summary-level validations).
+- **Structure**: Includes the same fields as the Good CSV but appends a **Flag_Reason** column detailing exactly which tests or summary checks failed/warned.
 
-## Full TFT
+### Help Request Expansion in CSVs
+If a level contains help requests:
+- Instead of exporting one row per level, the export generates **one row per help request** for that level.
+- Additional columns prefixed with `HR - ` are appended, containing details about each request (e.g., `HR - Help Asker`, `HR - Was Accepted`, `HR - Help Strategy`, etc.).
+- If there are no help requests on a level, a single row is written with empty `HR -` fields.
 
-- **Description:** Same checks as Macedonian but enforces 100% TFT.
-- **Tests run:**
-  - **Help Requests:** verifies `help_requests` array exists, total count, human vs virtual counts (expects 8 total; 4 human, 4 virtual). (same as Macedonian)
-  - **TFT (100%)**: requires all comparable virtual→human comparisons to match (100% matches expected).
-  - **Timestamps & Timing:** parses asking/answer/start/end timestamps, ensures `answer >= asking`, `asking >= level start`, `answer <= level end`, computes level duration and average response time.
-    - If `end_time` is before `start_time`, it shows a warning and uses `0s` duration instead of falling back silently.
-    - If the level duration is under 2 minutes, the test fails.
-    - If the level duration is under 2.5 minutes, it shows a warning.
-    (same as Macedonian)
-  - **Performance / FPS:** asserts `fps_info.avg_fps >= 30` (fail if below), and scans `fps_info.arr` for sustained low-FPS runs (shows warnings for long runs below threshold). (same as Macedonian)
-  - **Level Consistency:** basic validation that `level_key`, `level_num`, and `map_name` are present; if frontend level configs are available, validates they match the expected background/level number. (same as Macedonian)
+---
 
-## Deaf Study
+## Test Suites
 
-- **Description:** Same checks as Full TFT, but with intro + 6 levels total.
-- **Tests run:**
-  - **Help Requests:** verifies `help_requests` array exists, total count, human vs virtual counts (expects 8 total; 4 human, 4 virtual). (same as Macedonian)
-  - **TFT (100%)**: requires all comparable virtual→human comparisons to match (100% matches expected). (same as Full TFT)
-  - **Timestamps & Timing:** parses asking/answer/start/end timestamps, ensures `answer >= asking`, `asking >= level start`, `answer <= level end`, computes level duration and average response time.
-    - If `end_time` is before `start_time`, it shows a warning and uses `0s` duration instead of falling back silently.
-    - If the level duration is under 2 minutes, the test fails.
-    - If the level duration is under 2.5 minutes, it shows a warning.
-    (same as Macedonian)
-  - **Performance / FPS:** asserts `fps_info.avg_fps >= 30` (fail if below), and scans `fps_info.arr` for sustained low-FPS runs (shows warnings for long runs below threshold). (same as Macedonian)
-  - **Level Consistency:** basic validation that `level_key`, `level_num`, and `map_name` are present; if frontend level configs are available, validates they match the expected background/level number. (same as Macedonian)
-- **Suite-level expectations:** `expectedLevelCount: 7` (intro + 6 levels).
+Here is a summary of the expectations and tests run for each test suite:
 
-## Felix Version
+### Macedonian Study
+- **Level Requirements**: Expected level count is exactly **8** (including introduction). Skips tests on the introduction level.
+- **Tests run**:
+  1. **Help Requests Check**:
+     - Verifies a total of **8** help requests are present.
+     - Confirms exactly **4** were asked by the human player and exactly **4** by the virtual player.
+  2. **Tit For Tat (TFT)**:
+     - For every virtual player's help request, the virtual player's decision should match the human player's response to the previous virtual help request.
+     - Calculates TFT adherence percentage. (Fluctuating behavior is normal; should not be 100% all the time).
+  3. **Timestamps & Timing Check**:
+     - Validates that within each help request, `answer_time >= asking_time`.
+     - Validates that help requests happen during the level (`asking_time >= start_time` and `answer_time <= end_time`).
+     - **Transition Verification**: Ensures the start time of the current level is **after the end time of the previous level**. This check is skipped for Level 1 (Intro) and Level 2 (since the Intro has no recorded end time). Shows the exact time elapsed between levels.
+     - **Level Duration Check**: Confirms level duration is $\ge$ 2 minutes (fails if under 2m) and warns if completed in under 2.5 minutes.
+  4. **Level Consistency**:
+     - Assures basic fields (`level_key`, `level_num`, `map_name`) are present.
+     - If global level configs are loaded in Phaser, verifies the background and level number match the configuration rules.
 
-- **Description:** Felix-specific checks — expects 10 levels including intro, no help requests, and decision timing/choice fields.
-- **Tests run:**
-  - **No Help Requests:** asserts `help_requests` is empty.
-  - **Decision Choice & Timing:** checks `decision_start_time` and `decision_end_time` parse to valid timestamps, ensures `decision_end_time >= decision_start_time`, and validates `choice` is `slow` or `fast`.
-  - **Performance / FPS:** asserts `fps_info.avg_fps >= 30` (fail if below), and scans `fps_info.arr` for sustained low-FPS runs (shows warnings for long runs below threshold). (same as other suites)
-  - **Level Consistency:** basic validation that `level_key`, `level_num`, and `map_name` are present; if frontend level configs are available, validates they match the expected background/level number. (same as other suites)
-- **Suite-level expectations:** `expectedLevelCount: 10`; derives whether intro exists and skips intro-level tests.
+### Autistic Study
+- **Level Requirements**: Expected level count is exactly **8** (including introduction). Skips tests on the introduction level.
+- **Tests run**:
+  1. **Help Requests Check**:
+     - Verifies a total of **8** help requests are present.
+     - Confirms exactly **4** were asked by the human player and exactly **4** by the virtual player.
+  2. **Tit For Tat (TFT)**:
+     - For every virtual player's help request, the virtual player's decision should match the human player's response to the previous virtual help request.
+     - Calculates TFT adherence percentage. (Fluctuating behavior is normal; should not be 100% all the time).
+  3. **Timestamps & Timing Check**:
+     - Validates that within each help request, `answer_time >= asking_time`.
+     - Validates that help requests happen during the level (`asking_time >= start_time` and `answer_time <= end_time`).
+     - **Transition Verification**: Ensures the start time of the current level is **after the end time of the previous level**. This check is skipped for Level 1 (Intro) and Level 2 (since the Intro has no recorded end time). Shows the exact time elapsed between levels.
+     - **Level Duration Check**: Confirms level duration is $\ge$ 2 minutes (fails if under 2m) and warns if completed in under 2.5 minutes.
+  4. **Level Consistency**:
+     - Assures basic fields (`level_key`, `level_num`, `map_name`) are present.
+     - If global level configs are loaded in Phaser, verifies the background and level number match the configuration rules.
+
+### Full TFT
+- **Level Requirements**: Expected level count is exactly **8** (including introduction). Skips tests on the introduction level.
+- **Tests run**:
+  1. **Help Requests Check**:
+     - Verifies a total of **8** help requests are present.
+     - Confirms exactly **4** were asked by the human player and exactly **4** by the virtual player.
+  2. **Tit For Tat (100%)**:
+     - For every virtual player's help request, the virtual player's decision should match the human player's response to the previous virtual help request.
+     - Enforces exactly 100% TFT adherence (fails if any virtual response does not follow the human player's prior response).
+  3. **Timestamps & Timing Check**:
+     - Validates that within each help request, `answer_time >= asking_time`.
+     - Validates that help requests happen during the level (`asking_time >= start_time` and `answer_time <= end_time`).
+     - **Transition Verification**: Ensures the start time of the current level is **after the end time of the previous level**. This check is skipped for Level 1 (Intro) and Level 2 (since the Intro has no recorded end time). Shows the exact time elapsed between levels.
+     - **Level Duration Check**: Confirms level duration is $\ge$ 2 minutes (fails if under 2m) and warns if completed in under 2.5 minutes.
+  4. **Level Consistency**:
+     - Assures basic fields (`level_key`, `level_num`, `map_name`) are present.
+     - If global level configs are loaded in Phaser, verifies the background and level number match the configuration rules.
+
+### Deaf Study
+- **Level Requirements**: Expected level count is exactly **7** (including introduction). Skips tests on the introduction level.
+- **Tests run**:
+  1. **Help Requests Check**:
+     - Verifies a total of **8** help requests are present.
+     - Confirms exactly **4** were asked by the human player and exactly **4** by the virtual player.
+  2. **Tit For Tat (100%)**:
+     - For every virtual player's help request, the virtual player's decision should match the human player's response to the previous virtual help request.
+     - Enforces exactly 100% TFT adherence (fails if any virtual response does not follow the human player's prior response).
+  3. **Timestamps & Timing Check**:
+     - Validates that within each help request, `answer_time >= asking_time`.
+     - Validates that help requests happen during the level (`asking_time >= start_time` and `answer_time <= end_time`).
+     - **Transition Verification**: Ensures the start time of the current level is **after the end time of the previous level**. This check is skipped for Level 1 (Intro) and Level 2 (since the Intro has no recorded end time). Shows the exact time elapsed between levels.
+     - **Level Duration Check**: Confirms level duration is $\ge$ 2 minutes (fails if under 2m) and warns if completed in under 2.5 minutes.
+  4. **Level Consistency**:
+     - Assures basic fields (`level_key`, `level_num`, `map_name`) are present.
+     - If global level configs are loaded in Phaser, verifies the background and level number match the configuration rules.
+
+### Felix Version
+- **Level Requirements**: Expected level count is exactly **10** (including introduction). Skips tests on the introduction level.
+- **Tests run**:
+  1. **No Help Requests**:
+     - Asserts that no help requests were recorded during the level.
+  2. **Decision Choice & Timing**:
+     - Validates that the level decision start time and end time parse correctly.
+     - Confirms `decision_end_time >= decision_start_time`.
+     - Validates that the logged `choice` is either `slow` or `fast`.
+  3. **Level Consistency**:
+     - Assures basic fields (`level_key`, `level_num`, `map_name`) are present.
+     - If global level configs are loaded in Phaser, verifies the background and level number match the configuration rules.
 
 
 # ==========================================
@@ -1367,7 +1424,7 @@ parent: Addons
 
 The CloudFunctions repository contains the central backend services for the Co-Op platform.
 
-It is the main home for serverless backend logic and is deployed to GCP using GitHub Actions. Each backend function lives in its own subfolder, which keeps the codebase modular and makes it easier to deploy and maintain individual services. See [Backend]({$ link docs/Backend/index.md %}) for more info about the function.
+It is the main home for serverless backend logic and is deployed to GCP using GitHub Actions. Each backend function lives in its own subfolder, which keeps the codebase modular and makes it easier to deploy and maintain individual services. See [Backend]({% link docs/Backend/index.md %}) for more info about the function.
 
 ## What It Does
 
@@ -1520,10 +1577,13 @@ This application is built as a full-stack dashboard:
 
 ## Main Screens
 
+- **Login**: Auth screen with options to register new users or recover credentials.
 - **Patients**: Main landing page with searchable patient cards and progress summaries.
+- **Patient Details**: Detailed view per patient allowing strategies configuration and session progress tracking.
 - **Statistics**: Global analytics for study-level metrics and strategy comparisons.
-- **Strategies**: Strategy configuration and review for each patient and level.
-- **Settings**: Dashboard and application settings.
+- **Strategies**: Informational view detailing the available virtual player strategies and their parameters.
+- **Demographics**: Dynamic population comparison tool to compare custom-filtered groups of participants (e.g. by gender, sector, grade).
+- **Settings**: Dashboard and application settings (experimenter profile updates & password modification).
 
 ## How It Works
 
@@ -1561,7 +1621,7 @@ The backend is organized with Express routes and MongoDB models.
 - `POST /api/patients` creates a new patient.
 - `PATCH /api/patients/:id` updates patient information.
 - `DELETE /api/patients/:id` removes a patient.
-- `GET /api/game/:patientId` provides game data for external systems.
+- `GET /api/game/:patientId` provides strategy data for external game clients. Requires `therapistId` as a query parameter; can optionally take a `levelId` query parameter to filter for a specific level.
 
 The server uses CORS restrictions so only the expected dashboard and game client origins can call it.
 
@@ -4555,6 +4615,7 @@ This is a summary of all the current available websites, grouped into game versi
 | co-op-parents-dashboard | [Link](https://co-op-parents-dashboard-791222378113.europe-central2.run.app){:target="\_blank"}                                                        | Game parents dashboard that gets the user ID and returns the statistics                  | -      | [CO-OP-parents-dashboard](https://github.com/CoOp-World/Co-Op-Parents-Dashboard){:target="\_blank"} |
 | co-op-user-management   | [Link](https://co-op-user-management-791222378113.europe-central2.run.app){:target="\_blank"}                                                          | Interface to create users, edit their properties, and view user information              | -      | [CO-OP-user-management](https://github.com/CoOp-World/Co-op-user-management){:target="\_blank"} |
 | co-op-website           | [Link](https://co-op-website-791222378113.europe-central2.run.app){:target="\_blank"} or [coopworld.net](https://www.coopworld.net){:target="\_blank"} | The Co-op World website with game information and project details                        | -      | [CO-OP-website](https://github.com/CoOp-World/Co-Op-Website){:target="\_blank"} |
+| co-op-therapist-interface | [Link](https://co-op-therapist-interface-791222378113.europe-central2.run.app/login){:target="\_blank"} | Therapist dashboard for monitoring all users in a study and reviewing statistics | - | [CO-OP-therapist-interface](https://github.com/CoOp-World/CO-OP-therapist-interface){:target="\_blank"} |
 | felix-test-gap-speed    | [Link](https://co-op-change-speed-and-gap-791222378113.us-central1.run.app){:target="\_blank"}                                                         | Interface for Felix to change the gap between coins and the speed of the virtual players in his version of the game | 16     | [CO-OP-change-speed-and-gap](https://github.com/CoOp-World/CheckDiffrentSpeed){:target="\_blank"} |
 | co-op-qa                | [Link](https://co-op-qa-791222378113.europe-west1.run.app/){:target="\_blank"}                                                                        | QA system for checking the virtual player strategy after the fact                        | -      | [CO-OP-qa](https://github.com/CoOp-World/Co-Op-QA){:target="\_blank"} |
 
@@ -5878,7 +5939,7 @@ This collection stores documents to connect between patients (also the game) and
 | `gender`              | string       | The gender of the patient                                |
 | `levelNames`          | object       | Object containing level names the therapist named        |
 | `name`                | string       | Name of the patient                                      |
-| `patientId`           | string       | Unique identifier for the patient in the game            |
+| `patientId`           | string       | Identifier for the patient. Unique per therapist (under a compound index on therapistId and patientId) |
 | `sessionCount`        | int          | Number of session the patient is in                      |
 | `strategies`          | array        | List of strategies used by the patient for each level    |
 | `therapistId`         | string       | Unique identifier for the therapist managing the patient |
@@ -6026,7 +6087,7 @@ This collection stores documents related to users created for the therapist web 
 | `email`    | string   | User's email address                           |
 | `fullName` | string   | User's full name                               |
 | `localId`  | int      | Local identifier for the user                  |
-| `password` | string   | User's password                                |
+| `password` | string   | User's password (currently stored as plaintext in the database) |
 | `username` | string   | User's username                                |
 
 

@@ -9,7 +9,7 @@ parent: Addons
 
 The CloudFunctions repository contains the central backend services for the Co-Op platform.
 
-It is the main home for serverless backend logic and is deployed to GCP using GitHub Actions. Each backend function lives in its own subfolder, which keeps the codebase modular and makes it easier to deploy and maintain individual services. See [Backend]({$ link docs/Backend/index.md %}) for more info about the function.
+It is the main home for serverless backend logic and is deployed to GCP using GitHub Actions. Each backend function lives in its own subfolder, which keeps the codebase modular and makes it easier to deploy and maintain individual services. See [Backend]({% link docs/Backend/index.md %}) for more info about the function.
 
 ## What It Does
 

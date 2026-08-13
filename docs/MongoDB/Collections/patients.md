@@ -22,7 +22,7 @@ This collection stores documents to connect between patients (also the game) and
 | `gender`              | string       | The gender of the patient                                |
 | `levelNames`          | object       | Object containing level names the therapist named        |
 | `name`                | string       | Name of the patient                                      |
-| `patientId`           | string       | Unique identifier for the patient in the game            |
+| `patientId`           | string       | Identifier for the patient. Unique per therapist (under a compound index on therapistId and patientId) |
 | `sessionCount`        | int          | Number of session the patient is in                      |
 | `strategies`          | array        | List of strategies used by the patient for each level    |
 | `therapistId`         | string       | Unique identifier for the therapist managing the patient |
