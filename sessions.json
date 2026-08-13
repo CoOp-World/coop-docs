@@ -1,0 +1,679 @@
+[{
+  "_id": {
+    "$oid": "68454df5425fee84ccc5710f"
+  },
+  "name": "exp-felix-short",
+  "levels": [
+    {
+      "level_num": 0,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 13,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 2
+        },
+        {
+          "session_num": 1,
+          "index_in_session": 3
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "682f26261b9b233803cc5f89"
+  },
+  "name": "exp-competitive",
+  "levels": [
+    {
+      "level_num": 0,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 21,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 2
+        }
+      ]
+    },
+    {
+      "level_num": 22,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 3
+        }
+      ]
+    },
+    {
+      "level_num": 23,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 4
+        }
+      ]
+    },
+    {
+      "level_num": 24,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 25,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 2
+        }
+      ]
+    },
+    {
+      "level_num": 26,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 3
+        }
+      ]
+    },
+    {
+      "level_num": 27,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 4
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "682f2e01a78c49fc92f0af17"
+  },
+  "name": "exp-felix-one-background",
+  "levels": [
+    {
+      "level_num": 0,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 13,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 2
+        },
+        {
+          "session_num": 1,
+          "index_in_session": 3
+        },
+        {
+          "session_num": 1,
+          "index_in_session": 4
+        },
+        {
+          "session_num": 1,
+          "index_in_session": 5
+        },
+        {
+          "session_num": 1,
+          "index_in_session": 6
+        },
+        {
+          "session_num": 1,
+          "index_in_session": 7
+        },
+        {
+          "session_num": 1,
+          "index_in_session": 8
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6853f39626e3bc59650f941f"
+  },
+  "name": "test",
+  "levels": [
+    {
+      "level_num": 0,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 28,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 2
+        }
+      ]
+    },
+    {
+      "level_num": 28,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 3
+        }
+      ]
+    },
+    {
+      "level_num": 28,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 4
+        }
+      ]
+    },
+    {
+      "level_num": 28,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 28,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 2
+        }
+      ]
+    },
+    {
+      "level_num": 28,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 3
+        }
+      ]
+    },
+    {
+      "level_num": 28,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 4
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68cd54e11d5482c81068de82"
+  },
+  "name": "custom",
+  "levels": [
+    {
+      "level_num": 5,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 2
+        }
+      ]
+    },
+    {
+      "level_num": 10,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 13,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 3
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "690f867e6ada05ab4a5e57be"
+  },
+  "name": "Deaf-Version",
+  "levels": [
+    {
+      "level_num": 0,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 1,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 1,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 2,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 2,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 3,
+      "sessions": [
+        {
+          "session_num": 3,
+          "index_in_session": 1,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 4,
+      "sessions": [
+        {
+          "session_num": 3,
+          "index_in_session": 2,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 5,
+      "sessions": [
+        {
+          "session_num": 4,
+          "index_in_session": 1,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 6,
+      "sessions": [
+        {
+          "session_num": 4,
+          "index_in_session": 2,
+          "level_strategy": "TFT"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6947c4af0567375710a9e20d"
+  },
+  "name": "exp-felix-with-backgrounds",
+  "levels": [
+    {
+      "level_num": 0,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 30,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 2
+        }
+      ]
+    },
+    {
+      "level_num": 31,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 3
+        }
+      ]
+    },
+    {
+      "level_num": 32,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 4
+        }
+      ]
+    },
+    {
+      "level_num": 33,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 5
+        }
+      ]
+    },
+    {
+      "level_num": 34,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 6
+        }
+      ]
+    },
+    {
+      "level_num": 35,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 7
+        }
+      ]
+    },
+    {
+      "level_num": 36,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 8
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69c4200c8a6d54bbfe108353"
+  },
+  "name": "FullTFT",
+  "levels": [
+    {
+      "level_num": 0,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 1,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 2,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 2,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 3,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 3,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 4,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 4,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 1,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 5,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 2,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 6,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 3,
+          "level_strategy": "TFT"
+        }
+      ]
+    },
+    {
+      "level_num": 7,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 3,
+          "level_strategy": "TFT"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69ee61c4ce1d084db7e211c1"
+  },
+  "name": "Macedonia - Anna",
+  "levels": [
+    {
+      "level_num": 0,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 21,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 2
+        }
+      ]
+    },
+    {
+      "level_num": 22,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 3
+        }
+      ]
+    },
+    {
+      "level_num": 23,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 4
+        }
+      ]
+    },
+    {
+      "level_num": 24,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 25,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 2
+        }
+      ]
+    },
+    {
+      "level_num": 26,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 3
+        }
+      ]
+    },
+    {
+      "level_num": 27,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 4
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69f098af4a2e88b174e9ce2b"
+  },
+  "name": "ָAutistic",
+  "levels": [
+    {
+      "level_num": 0,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 21,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 2
+        }
+      ]
+    },
+    {
+      "level_num": 22,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 3
+        }
+      ]
+    },
+    {
+      "level_num": 23,
+      "sessions": [
+        {
+          "session_num": 1,
+          "index_in_session": 4
+        }
+      ]
+    },
+    {
+      "level_num": 24,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 1
+        }
+      ]
+    },
+    {
+      "level_num": 25,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 2
+        }
+      ]
+    },
+    {
+      "level_num": 26,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 3
+        }
+      ]
+    },
+    {
+      "level_num": 27,
+      "sessions": [
+        {
+          "session_num": 2,
+          "index_in_session": 4
+        }
+      ]
+    }
+  ]
+}]

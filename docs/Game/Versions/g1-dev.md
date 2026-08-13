@@ -21,7 +21,6 @@ The development version for Group 1, used for feature development and testing sp
 | Property | Value |
 |----------|-------|
 | **Levels Available** | 20 |
-| **Supported User IDs** | 7743 |
 | **Region** | Europe Central 2 |
 | **Status** | Development |
 
@@ -35,11 +34,6 @@ The g1-dev version uses a focused level set:
 - **Level 20**: Group 1 specific advanced scenario
 
 This level is designed and tested specifically for Group 1's research needs.
-
-## User IDs
-
-Access is limited to the Group 1 participant:
-- User ID: 7743
 
 ## Features
 

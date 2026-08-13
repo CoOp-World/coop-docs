@@ -8,149 +8,75 @@ grand_parent: Game
 
 # exp-felix - Felix Experiment
 
-Felix's experimental version of the Coop Game is designed to study children's decision-making patterns when choosing between virtual characters with different cooperation behaviors. The game follows a structured flow from introduction to character selection rounds.
+Felix's experimental version of the Coop Game is designed to study children's decision-making patterns when choosing between virtual characters with different cooperation behaviors.
 
 ## Access Information
 
-- **Game URL**: [https://exp-felix-791222378113.us-central1.run.app](https://exp-felix-791222378113.us-central1.run.app){:target="_blank"}
-- **Repository Branch**: `prod-Felix-exp`
-- **Supported User IDs**: 1913, 8918
+- **Production URL**: [https://exp-felix-791222378113.us-central1.run.app](https://exp-felix-791222378113.us-central1.run.app){:target="_blank"}
+- **Production Branch**: `prod-Felix-exp`
+- **Development Branch**: `dev-Felix-exp`
+- **Repository**: [CO-OP-client (Felix branch)](https://github.com/CoOp-World/CO-OP-client/tree/prod-Felix-exp){:target="_blank"}
 
 ## Game Details
 
 | Property | Value |
 |----------|-------|
-| **Levels Available** | 0, 11-13 |
-| **Supported User IDs** | 1913, 8918 |
+| **Levels Available** | `0, 11-13` or `0, 30-36` (depending on session name) |
 | **Region** | US Central 1 |
 | **Status** | Production |
 
+### Supported Session Orders
+When creating a user, the following session configs are supported:
+- **`exp-felix-with-backgrounds`**: Levels `0, 30-36` (Intro + 7 main rounds).
+- **`exp-felix-one-background`**: Levels `0, 13` repeated 7 times (Intro + 7 main rounds).
+- **`exp-felix-short`**: Levels `0, 13` repeated 2 times (Intro + 2 main rounds).
+- **Standard Training Sequence**: Levels `0, 11-13` (Intro + 2 training rounds + repeated main round).
+
 ---
-
-# Felix Version - Game Flow & Overview
-
-Felix's experimental version of the Coop Game is designed to study children's decision-making patterns when choosing between virtual characters with different cooperation behaviors. The game follows a structured flow from introduction to character selection rounds.
-
-## Access Information
-
-- **Game URL**: [https://exp-felix-791222378113.us-central1.run.app](https://exp-felix-791222378113.us-central1.run.app){:target="_blank"}
-- **Repository Branch**: `dev-Felix-exp`
 
 ## Complete Game Flow
 
-### Phase 1: Introduction and Tutorial
+### Phase 1: Onboarding and Tutorial
 
-#### Initial Setup
-- User enters with their assigned User ID
-- System loads user configuration and session data
-- Master users see level progression counter (Level: X/Y) in top-left corner
+1. **Login Phase**: Child enters the game portal with their assigned User ID. The system validates the ID and loads session configurations from MongoDB.
+2. **Gender Selection**: The child selects the genders of the player characters/avatars before starting.
+3. **Game Introduction**: A brief text and audio-based introduction explaining the game setting and goals.
+4. **Controls Tutorial**: A step-by-step introduction to the keyboard controls (arrow keys or WASD) and the cooperation mechanics.
+5. **Tutorial Level (Level 0)**: Practice basic controls and mechanics in a safe environment. Player moves on the grid, collects coins, and meets the virtual characters.
 
-![Login Screen]({% link assets/login_screen.png %})
+### Phase 2: Character Speed Training (If levels 11 and 12 are included)
 
-#### Tutorial Level (Level 0)
-- **Purpose**: Teach basic game controls and mechanics
-- **Duration**: Introductory level to familiarize players with the interface
-- **Controls Training**: 
-  - Movement controls (arrow keys or WASD)
-  - Interaction with coins and collectibles
-  - Understanding cooperation mechanics
-- **Virtual Player Introduction**: Players meet the virtual characters they'll work with
+* **Slow Character Practice (Level 11)**: Player experiences working with the slow-moving virtual character.
+* **Fast Character Practice (Level 12)**: Player experiences working with the fast-moving virtual character.
 
-### Phase 2: Character Speed Training
+### Phase 3: Main Experimental Rounds
 
-#### Slow Character Practice
-- **Purpose**: Players experience working with the slow-moving virtual character
-- **Mechanics**: Virtual player moves at reduced speed
-- **Learning Outcome**: Understanding how character speed affects coin collection and cooperation
+This is the core of the study, designed to observe children's character selection patterns over 7 rounds (either levels 30–36 or level 13 repeated).
 
-#### Fast Character Practice  
-- **Purpose**: Players experience working with the fast-moving virtual character
-- **Mechanics**: Virtual player moves at increased speed
-- **Learning Outcome**: Understanding how character speed affects coin collection strategies
-
-### Phase 3: Main Experimental Rounds (7 Rounds)
-
-This is the core of the study, designed to observe children's character selection patterns.
-
-#### Round Structure
-Each of the 7 rounds follows this pattern:
-
-1. **Character Selection Screen**
-   - Players choose between two virtual characters
-   - Each character has different coin-sharing behaviors:
-     - **Fair Character**: Splits coins equally with the player (50/50)
-     - **Unfair Character**: Keeps more coins, gives less to the player (varies by level)
-   - Visual representation shows how each character splits coins
-
-2. **Gameplay Phase**
-   - Player works with their chosen virtual character
-   - Collect coins together during the time limit
-   - Cooperation mechanics determine success
-   - Coin splitting happens according to chosen character's behavior
-
-![Gameplay Showcase]({% link assets/gameplay_showcase.png %})
-
-3. **Results Display**
-   - Shows coins collected during the round
-   - Displays how coins were split between player and virtual character
-   - Updates total score for the player
-
-
-#### Character Behavior Patterns
-
-**Fair Characters:**
-- Always split coins equally (50/50)
-- Consistent cooperative behavior
-- Reliable partnership
-
-**Unfair Characters:**
-- Various splitting ratios (e.g., 70/30, 60/40, 80/20)
-- Take larger share of collected coins
-- May collect more total coins due to different strategies
-
-#### Research Objective
-The main study focuses on tracking:
-- Which character types children prefer
-- How preferences change over multiple rounds
-- Whether children prioritize fairness or total coin collection
-- Pattern recognition in decision-making
+#### Round Structure:
+1. **Character Selection Screen**: Players choose between two virtual characters:
+   - **Fair Character**: Splits coins equally with the player (6 for human player and 6 for virtual character).
+   - **Unfair Character**: Keeps a larger share of collected coins (6 for human player and 12 for virtual character).
+2. **Gameplay Phase**: Player works with their chosen virtual character to collect coins together during the time limit.
+3. **Results Display**: Shows coins collected during the round and displays how coins were split.
+4. **Ending**: After completing level 10 the game is over and the results screen is shown
 
 ### Phase 4: Game Completion
 
-#### High Score Display
-- **Final Results**: Shows player's accumulated total score across all rounds
-- **Achievement Recognition**: Celebrates player's performance
-- **Data Recording**: All choices and scores are saved for research analysis
+* **High Score Display**: Shows player's accumulated total score across all rounds.
+* **Session End & Data Submission**: Results and choices are automatically saved and sent to the MongoDB database for research analysis.
 
-#### Session End
-- **Study Completion**: Game session officially ends
-- **Thank You Message**: Appreciation for participation
-- **Data Submission**: Results automatically sent to research database
-
-## Master User Features
-
-### Enhanced Monitoring (Master Users Only)
-- **Level Counter**: Real-time progression display in corner of screen
-- **Session Tracking**: Accurate counting of completed rounds
-- **Debug Information**: Additional technical details for researchers
-- **Enhanced Analytics**: Access to detailed performance metrics
-
-### Level Progression Display
-```
-Format: "Level: X/Y"
-Example: "Level: 3/8" (showing round 3 of 8 total)
-```
+---
 
 ## Research Data Collection
 
 ### Tracked Metrics
-- **Character Selection**: Which character chosen each round
-- **Collection Performance**: Coins collected per round
-- **Cooperation Patterns**: How well player works with each character type
-- **Time Metrics**: Response times for character selection
-- **Behavioral Trends**: Changes in preferences over rounds
+- **Character Selection**: Which character chosen each round.
+- **Collection Performance**: Coins collected per round.
+- **Time Metrics**: Response times for character selection.
+- **Behavioral Trends**: Changes in preferences over rounds.
 
-### Data Structure
+### Data Structure Example
 ```json
 {
   "user_id": "participant_id",
@@ -170,10 +96,11 @@ Example: "Level: 3/8" (showing round 3 of 8 total)
 }
 ```
 
-## Experimental Design Goals
+---
 
-1. **Choice Pattern Analysis**: Understanding how children make decisions between fair and unfair options
-2. **Preference Evolution**: Tracking changes in character preferences across rounds
-3. **Fairness vs. Efficiency**: Studying trade-offs between equal sharing and total collection
-4. **Learning Behavior**: Observing adaptation to different character behaviors
-5. **Individual Differences**: Identifying personality-based decision patterns
+## Master User Features
+
+### Enhanced Monitoring (Master Users Only)
+- **Level Counter**: Real-time progression display in the top-left corner of the screen.
+- **Session Tracking**: Accurate counting of completed rounds.
+- **Format**: `"Level: X/Y"` (e.g., `"Level: 3/8"` showing round 3 of 8 total).

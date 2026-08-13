@@ -21,7 +21,6 @@ The development version for Group 3, used for feature development and testing sp
 | Property | Value |
 |----------|-------|
 | **Levels Available** | 14-15 |
-| **Supported User IDs** | 3184, 4072 |
 | **Region** | Europe Central 2 |
 | **Status** | Development |
 
@@ -36,12 +35,6 @@ The g3-dev version uses a focused level set:
 - **Level 15**: Advanced Group 3 scenario
 
 These levels are designed and tested specifically for Group 3's research needs.
-
-## User IDs
-
-Access is limited to Group 3 participants:
-- User ID: 3184
-- User ID: 4072
 
 ## Features
 
