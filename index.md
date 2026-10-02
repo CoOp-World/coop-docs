@@ -47,8 +47,7 @@ Explore the comprehensive guides and documentation provided on this site to get 
 
 - **Explore Phaser**: Learn the basics of game development using the Phaser framework. Set up your development environment, create sprites, manage game physics, and integrate sound and music.
 - **Backend Development with Python on GCP**: Explore the Python-based backend hosted on GCP, which handles multiplayer interactions, data storage, and real-time game state synchronization. Learn how to deploy and manage backend infrastructure using Google Cloud Platform services.
-- **Notion Documentation**: Game changes are documented in Notion, including design decisions, development processes, and information to help future developers understand the project.
-  - [Notion Documentation](https://www.notion.so/1187f8928ee28173ac9bf63a11d353c4?v=1187f8928ee28190b430000cfecb0d3b&pvs=4){:target="\_blank"}
+- **Project History**: Design decisions, early meeting outcomes and the roadmap from the team's former Notion workspace are kept in the [Project History]({% link docs/Project History/index.md %}) section. Notion has been retired.
 - **GitHub Repository**: The source code is hosted on GitHub, allowing developers to contribute, report issues, and collaborate. The repository includes setup instructions and guidance for running the game locally.
   - [GitHub Organization](https://github.com/CoOp-World){:target="\_blank"}
 - **GitHub Pages for Documentation**: This site uses GitHub Pages and the Just the Docs theme, providing a user-friendly documentation site that can be easily maintained and updated alongside game development.
